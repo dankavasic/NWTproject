@@ -1,0 +1,29 @@
+<div>
+    <h3>Zgrade</h3>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Ime</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let zgrada of zgrade">
+      <td>
+        {{zgrada.ime}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" aria-label="Edit" (click)="gotoEdit(zgrada)">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+        </button>
+  
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteZgrada(zgrada.id)">
+          <span class="fa fa-remove" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div class="right">
+    <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAdd()">
+      <span class="fa fa-plus" aria-hidden="true"></span>
+    </button>
+  </div> 
+  
