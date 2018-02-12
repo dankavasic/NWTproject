@@ -11,6 +11,8 @@ import { ZgradeComponent } from './zgrade/zgrade.component';
 import { ZgradaService } from './zgrade/zgrada.service';
 import {StanoviComponent}from './stanovi/stanovi.component';
 import { StanService} from './stanovi/stan.service';
+import {FirmeComponent} from './firme/firme.component';
+import {FirmaService} from './firme/firma.service';
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +21,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     ZgradeComponent,
-    StanoviComponent
+    StanoviComponent,
+    FirmeComponent
 
   ],
   imports: [  
@@ -29,7 +32,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService],
+  providers: [ZgradaService,StanService, FirmaService],
   bootstrap: [AppComponent],
 
 })
