@@ -9,21 +9,28 @@ import 'rxjs/add/operator/map';
 import { AppComponent } from './app.component';
 import { ZgradeComponent } from './zgrade/zgrade.component';
 import { ZgradaService } from './zgrade/zgrada.service';
+import {StanoviComponent}from './stanovi/stanovi.component';
+import { StanService} from './stanovi/stan.service';
 
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ZgradeComponent
+    ZgradeComponent,
+    StanoviComponent
 
   ],
   imports: [  
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
     routing
   ],
-  providers: [ZgradaService],
-  bootstrap: [AppComponent]
+  providers: [ZgradaService,StanService],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

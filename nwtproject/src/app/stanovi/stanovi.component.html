@@ -1,0 +1,29 @@
+<div>
+    <h3>Stanovi</h3>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Ime</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let stan of stanovi">
+      <td>
+        {{stan.ime}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" aria-label="Edit" (click)="gotoEdit(stan)">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+        </button>
+  
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteStan(stan.id)">
+          <span class="fa fa-remove" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div class="right">
+    <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAdd()">
+      <span class="fa fa-plus" aria-hidden="true"></span>
+    </button>
+  </div> 
+  
