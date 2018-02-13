@@ -61,16 +61,6 @@ export class ZgradaService {
             .toPromise()           
             .catch(this.handleError);
     }
-
-    /*getCourseEnrollments(courseId: number): Promise<Enrollment[]> {
-        const url = `${this.coursesUrl}/${courseId}/students`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response =>
-                response.json() as Enrollment[])
-            .catch(this.handleError);
-    }*/
-
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
         return Promise.reject(error.message || error);
