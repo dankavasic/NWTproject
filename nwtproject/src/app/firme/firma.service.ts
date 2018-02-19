@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FirmaService {
-    private firmeUrl = 'api/firma';
+    private firmeUrl = 'api/firma/all';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }

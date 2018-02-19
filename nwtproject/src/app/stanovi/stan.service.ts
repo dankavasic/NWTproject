@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class StanService {
-    private stanoviUrl = 'api/stan';
+    private stanoviUrl = 'api/stan/all';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }

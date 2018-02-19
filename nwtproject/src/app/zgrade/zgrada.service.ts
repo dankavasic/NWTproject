@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ZgradaService {
-    private zgradeUrl = 'api/zgrada';
+    private zgradeUrl = 'api/zgrada/all';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
