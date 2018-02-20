@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class StanService {
-    private stanoviUrl = 'api/stan/all';
+    private stanoviUrl = 'api/stan';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -22,7 +22,8 @@ export class StanService {
     }
 
     getStanovi(): Promise<Stan[]> {
-        return this.http.get(this.stanoviUrl)
+        const url = 'api/stan/all';
+        return this.http.get(url)
             .toPromise()
             .then(response =>
                 response.json() as Stan[])

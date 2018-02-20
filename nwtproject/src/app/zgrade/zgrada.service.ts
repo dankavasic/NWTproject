@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ZgradaService {
-    private zgradeUrl = 'api/zgrada/all';
+    private zgradeUrl = 'api/zgrada';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -22,7 +22,8 @@ export class ZgradaService {
     }
 
     getZgrade(): Promise<Zgrada[]> {
-        return this.http.get(this.zgradeUrl)
+        const url = 'api/zgrada/all';
+        return this.http.get(url)
             .toPromise()
             .then(response =>
                 response.json() as Zgrada[])
@@ -30,7 +31,7 @@ export class ZgradaService {
     }
 
     getZgrada(id: number): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}/${id}`;
+        const url = 'api/zgrada/id'        //        const url = `${this.zgradeUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>

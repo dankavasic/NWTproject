@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FirmaService {
-    private firmeUrl = 'api/firma/all';
+    private firmeUrl = 'api/firma';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -22,7 +22,8 @@ export class FirmaService {
     }
 
     getFirme(): Promise<Firma[]> {
-        return this.http.get(this.firmeUrl)
+        const url = 'api/firma/all';
+        return this.http.get(url)
             .toPromise()
             .then(response =>
                 response.json() as Firma[])
