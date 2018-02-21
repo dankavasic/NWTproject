@@ -48,8 +48,9 @@ export class ZgradaService {
     }
 
     editZgrada(zgrada: Zgrada): Promise<Zgrada> {
+        const url = 'api/zgrada'
         return this.http
-            .put(this.zgradeUrl, JSON.stringify(zgrada), { headers: this.headers })
+            .put(url, JSON.stringify(zgrada), { headers: this.headers })
             .toPromise()
             .then(res => res.json() as Zgrada)
             .catch(this.handleError);

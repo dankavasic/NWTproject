@@ -16,13 +16,15 @@ import {FirmaService} from './firme/firma.service';
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ZgradeComponent,
     StanoviComponent,
-    FirmeComponent
+    FirmeComponent,
+    ZgradaDetailComponent
 
   ],
   imports: [  
