@@ -31,7 +31,7 @@ export class FirmaService {
     }
 
     getFirma(id: number): Promise<Firma> {
-        const url = `${this.firmeUrl}/${id}`;
+        const url = `api/firma/all/id`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
@@ -47,7 +47,7 @@ export class FirmaService {
             .catch(this.handleError);
     }
 
-    editZgrada(firma: Firma): Promise<Firma> {
+    editFirma(firma: Firma): Promise<Firma> {
         return this.http
             .put(this.firmeUrl, JSON.stringify(firma), { headers: this.headers })
             .toPromise()

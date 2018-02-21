@@ -1,0 +1,37 @@
+<div>
+    <h3>Korisnici</h3>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>Ime</th>
+      <th>Korisnicko ime</th>
+      <th>Uloga</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let korisnik of korisnici">
+      <td>
+        {{korisnik.ime}}
+      </td>
+      <td>
+        {{korisnik.korisIme}}
+      </td>
+      <td>
+        {{korisnik.Uloga}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" aria-label="Edit" (click)="gotoEdit(korisnik)">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+        </button>
+  
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteKorisnik(korisnik.id)">
+          <span class="fa fa-remove" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <div class="right">
+    <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAdd()">
+      <span class="fa fa-plus" aria-hidden="true"></span>
+    </button>
+  </div> 
+  

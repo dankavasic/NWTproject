@@ -13,6 +13,7 @@ import {StanoviComponent}from './stanovi/stanovi.component';
 import { StanService} from './stanovi/stan.service';
 import {FirmeComponent} from './firme/firme.component';
 import {FirmaService} from './firme/firma.service';
+import {FirmaDetailComponent} from './firma-detail/firma-detail.component'
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +25,8 @@ import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
     ZgradeComponent,
     StanoviComponent,
     FirmeComponent,
-    ZgradaDetailComponent
+    ZgradaDetailComponent,
+    FirmaDetailComponent
 
   ],
   imports: [  
