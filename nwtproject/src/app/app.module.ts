@@ -13,11 +13,13 @@ import {StanoviComponent}from './stanovi/stanovi.component';
 import { StanService} from './stanovi/stan.service';
 import {FirmeComponent} from './firme/firme.component';
 import {FirmaService} from './firme/firma.service';
-import {FirmaDetailComponent} from './firma-detail/firma-detail.component'
-
+import {FirmaDetailComponent} from './firma-detail/firma-detail.component';
+import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
+import { StanDetailComponent } from './stan-detail/stan-detail.component';
+import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
     StanoviComponent,
     FirmeComponent,
     ZgradaDetailComponent,
-    FirmaDetailComponent
+    FirmaDetailComponent,
+    StanDetailComponent,
+    KorisnikDetailComponent
 
   ],
   imports: [  
