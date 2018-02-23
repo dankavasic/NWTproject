@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import { Zgrada } from '../model/zgrada.model';
-
-import 'rxjs/add/operator/toPromise';
 import { Kvar } from '../model/kvar.model';
 
+import 'rxjs/add/operator/toPromise';
+
 @Injectable()
-export class ZgradaService {
-    private zgradeUrl = 'api/zgrada';
+export class KvarService {
+    private kvaroviUrl = 'api/kvar';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -22,57 +21,55 @@ export class ZgradaService {
         this.RegenerateData.next();
     }
 
-    getZgrade(): Promise<Zgrada[]> {
-        const url = 'api/zgrada/all';
+    getKvarovi(): Promise<Kvar[]> {
+        return this.http.get(this.kvaroviUrl)
+            .toPromise()
+            .then(response =>
+                response.json() as Kvar[])
+            .catch(this.handleError);
+    }
+
+    getKvar(id: number): Promise<Kvar> {
+        const url = `${this.kvaroviUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
-                response.json() as Zgrada[])
+                response.json() as Kvar)
             .catch(this.handleError);
     }
 
-    getZgrada(id: number): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}/all/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response =>
-                response.json() as Zgrada)
-            .catch(this.handleError);
-    }
-
-    addZgrada(zgrada: Zgrada): Promise<Zgrada> {
+    addKvar(kvar: Kvar): Promise<Kvar> {
         return this.http
-            .post(this.zgradeUrl, JSON.stringify(zgrada), { headers: this.headers })
+            .post(this.kvaroviUrl, JSON.stringify(kvar), { headers: this.headers })
             .toPromise()
-            .then(res => res.json() as Zgrada)
+            .then(res => res.json() as Kvar)
             .catch(this.handleError);
     }
 
-    editZgrada(zgrada: Zgrada): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}/all/${zgrada.id}`;
+    editKvar(kvar: Kvar): Promise<Kvar> {
         return this.http
-            .put(url, JSON.stringify(zgrada), { headers: this.headers })
+            .put(this.kvaroviUrl, JSON.stringify(kvar), { headers: this.headers })
             .toPromise()
-            .then(res => res.json() as Zgrada)
+            .then(res => res.json() as Kvar)
             .catch(this.handleError);
     }
 
-    deleteZgrada(zgradaId: number): Promise<{}> {
-        const url = `${this.zgradeUrl}/${zgradaId}`;
+    deleteKvar(kvarId: number): Promise<{}> {
+        const url = `${this.kvaroviUrl}/${kvarId}`;
         return this.http
             .delete(url)
             .toPromise()           
             .catch(this.handleError);
     }
 
-    getZgradaKvar(zgradaId: number): Promise<Kvar[]> {
-        const url = `${this.zgradeUrl}/${zgradaId}/kvar`;
+    /*getKvarKomentar(kvarId: number): Promise<Komentar[]> {
+        const url = `${this.kvaroviUrl}/${kvarId}/komentar/all`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
-                response.json() as Kvar[])
+                response.json() as Komentar[])
             .catch(this.handleError);
-    }
+    } */
 
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);

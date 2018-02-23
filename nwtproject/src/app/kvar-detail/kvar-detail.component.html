@@ -1,0 +1,38 @@
+<div>
+  <h3>Kvar</h3>
+</div>
+
+<div>
+  <form>
+    <div class="form-group">
+      <label for="field1c" class="form-control-label">Ime</label>
+        <input type="text" [(ngModel)]="kvar.ime" placeholder="Name" 
+        class="form-control" id="field1c" name="field1">
+</div>
+
+</form>
+  <!--<div *ngIf="kurs.id">
+    <div>
+      <h3>Komentari</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKomentar()">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <tr *ngFor="let komentar of komentari">
+        <td>
+        {{komentar.id}} {{komentar.ime}} {{komentar.opis}} {{komentar.kreator.ime}} {{komentar.datKreiranja}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKomentar(komentar.id)">
+            <span class="fa fa-remove" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+    </table>   
+  </div>
+</div>-->
+<div>
+  <button class="btn btn-primary" (click)="save()">OK</button>
+  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+</div>

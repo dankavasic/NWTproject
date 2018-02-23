@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ZgradaService } from '../zgrade/zgrada.service';
 import { Zgrada } from '../model/zgrada.model';
 
 import 'rxjs/add/operator/switchMap';
+import { Korisnik } from '../model/korisnik.model';
+import { Kvar } from '../model/kvar.model';
+import { KvarService } from '../kvarovi/kvarovi.service';
 
 @Component({
   selector: 'app-zgrada-detail',
@@ -13,18 +16,26 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./zgrada-detail.component.css']
 })
 export class ZgradaDetailComponent implements OnInit {
-  zgrada: Zgrada;
+  zgrada = new Zgrada({ // if we add a new student, create an empty student
+    ime: '',
+    adresa: '',
+    vlasnik: new Korisnik({
+      ime: '',
+      lozinka: '',
+      korisIme: '',
+      uloga: '',
+    })
+  });
 
-  mode: string;    
+  mode: string = 'ADD';
 
-  constructor(private zgradaService: ZgradaService, private route: ActivatedRoute, private location: Location) {
-    this.zgrada = new Zgrada({ // if we add a new student, create an empty student
-        ime: '',
-        adresa: '',
-        vlasnik: ''
-      });
+  kvarovi: Kvar[];
 
-    this.mode = 'ADD'
+  constructor(private zgradaService: ZgradaService, private kvarService: KvarService,
+     private route: ActivatedRoute, private location: Location, private router: Router) {
+      zgradaService.RegenerateData$.subscribe(() =>
+        this.getKvarovi()
+     );
   }
 
   ngOnInit() {
@@ -36,9 +47,15 @@ export class ZgradaDetailComponent implements OnInit {
           this.zgradaService.getZgrada(+params['id'])) // convert to number
         .subscribe(zgrada => {
           this.zgrada = this.zgrada;
+          this.getKvarovi;
           }
         );
     } 
+  }
+
+  private getKvarovi(): void {
+    this.zgradaService.getZgradaKvar(this.zgrada.id).then(kvarovi =>
+      this.kvarovi = kvarovi);
   }
 
   save(): void {
@@ -65,4 +82,13 @@ export class ZgradaDetailComponent implements OnInit {
     this.location.back();
   }
 
+  gotoAddKvar(): void {
+    this.router.navigate(['/addKvar'], { queryParams: { zgradaId: this.zgrada.id } });
+  }
+
+  deleteKvar(kvarId: number): void {
+    this.kvarService.deleteKvar(kvarId).then(
+      () => this.getKvarovi()
+    );
+  }
 }

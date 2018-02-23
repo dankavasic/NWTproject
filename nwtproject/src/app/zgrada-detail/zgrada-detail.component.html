@@ -19,25 +19,32 @@
          
           <div class="form-group">
             <label for="field3c" class="form-control-label">Vlasnik</label>
-            <input type="text" [(ngModel)]="zgrada.vlasnik" placeholder="Vlasnik" 
+            <input type="text" [(ngModel)]="zgrada.vlasnik.ime" placeholder="Vlasnik" 
                class="form-control" id="field3c" name="field3">
           </div>
      </form>
-    
+    <div *ngIf="zgrada.id">
+    <div>
+      <h3>kvarovi</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKvar()">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <tr *ngFor="let kvar of kvarovi">
+        <td>
+        {{kvar.id}} {{kvar.ime}} {{kvar.opis}} {{kvar.kreator.ime}} {{kvar.datKreiranja}} {{kvar.datZakazivanja}} {{kvar.datPopravke}} {{kvar.popravljen}}{{kvar.radnik.ime}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKvar(kvar.id)">
+            <span class="fa fa-remove" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+    </table>   
+  </div>
+</div>
   
-    <!--<div *ngIf="zgrada.id "> Do not show courses when adding a new student
-      <div>
-          <h3>Courses</h3>
-      </div>
-      <table class="table table-bordered">
-        <tr *ngFor="let enrollment of enrollments">
-          <td>
-            {{enrollment.course.name}}
-          </td>
-        </tr>
-      </table>
-    </div> 
-  </div>-->
   <div>
     <button class="btn btn-primary" (click)="goBack()">Cancel</button>
     <button class="btn btn-primary" (click)="save()">OK</button>

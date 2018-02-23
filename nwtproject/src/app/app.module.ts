@@ -19,6 +19,9 @@ import { StanDetailComponent } from './stan-detail/stan-detail.component';
 import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { KvaroviComponent } from './kvarovi/kvarovi.component';
+import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
+import { KvarService } from './kvarovi/kvarovi.service';
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ZgradaDetailComponent,
     FirmaDetailComponent,
     StanDetailComponent,
-    KorisnikDetailComponent
+    KorisnikDetailComponent,
+    KvaroviComponent,
+    KvarDetailComponent
 
   ],
   imports: [  
@@ -40,7 +45,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService, FirmaService],
+  providers: [ZgradaService,StanService, FirmaService, KvarService],
   bootstrap: [AppComponent],
 
 })

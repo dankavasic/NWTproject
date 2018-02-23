@@ -1,8 +1,10 @@
+import { Korisnik } from "./korisnik.model";
+
 export class Zgrada implements ZgradaInterface{
 	public id: number;
 	public ime: string;
 	public adresa: string;
-	public vlasnik: string;
+	public vlasnik: Korisnik;
 		
 	constructor(zgradaCfg: ZgradaInterface)
 	{	
@@ -17,5 +19,5 @@ interface ZgradaInterface {
 	id?: number;
 	ime: string;
 	adresa: string;
-	vlasnik: string;
+	vlasnik: Korisnik;
 }
