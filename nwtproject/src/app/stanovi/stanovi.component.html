@@ -14,6 +14,8 @@
     <tr>
       <th>Ime</th>
       <th>Adresa</th>
+      <th>Broj stanovnika</th>
+      <th>Vlasnik</th>
       <th>Zgrada</th>
     </tr>
     <tr *ngFor="let stan of stanovi">
@@ -24,7 +26,13 @@
         {{stan.adresa}}
       </td>
       <td>
-        {{stan.zgrada}}
+        {{stan.brStanovnika}}
+      </td>
+      <td>
+        {{stan.vlasnik.ime}}
+      </td>
+      <td>
+        {{stan.zgrada.ime}}
       </td>
       <td>
         <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(stan)">

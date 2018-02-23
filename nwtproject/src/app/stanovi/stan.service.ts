@@ -30,7 +30,7 @@ export class StanService {
             .catch(this.handleError);
     }
     getStan(id: number): Promise<Stan> {
-        const url = `${this.stanoviUrl}/${id}`;
+        const url = `${this.stanoviUrl}/all/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
@@ -45,6 +45,7 @@ export class StanService {
             .catch(this.handleError);
     }
     editStan(stan: Stan): Promise<Stan> {
+        const url = `${this.stanoviUrl}/all/${stan.id}`;
         return this.http
             .put(this.stanoviUrl, JSON.stringify(stan), { headers: this.headers })
             .toPromise()

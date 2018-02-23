@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params,Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { StanService } from '../stanovi/stan.service';
 import { Stan } from '../model/stan.model';
 
 import 'rxjs/add/operator/switchMap';
+import { Zgrada } from '../model/zgrada.model';
+import { Korisnik } from '../model/korisnik.model';
 
 @Component({
   selector: 'app-stan-detail',
@@ -13,18 +15,31 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./stan-detail.component.css']
 })
 export class StanDetailComponent implements OnInit {
-    stan: Stan;
+  stan = new Stan({ // if we add a new student, create an empty student
+    ime: '',
+    adresa: '',
+    zgrada : new Zgrada({
+      ime: '',
+      adresa: '',
+      vlasnik: new Korisnik({
+        ime: '',
+        lozinka: '',
+        korisIme: '',
+        uloga: '',
+      })
+    }),
+    vlasnik: new Korisnik({
+      ime: '',
+      lozinka: '',
+      korisIme: '',
+      uloga: '',
+    })
+  });
 
-  mode: string;    
+  mode: string='ADD';    
 
   constructor(private stanService: StanService, private route: ActivatedRoute, private location: Location) {
-    this.stan = new Stan({ // if we add a new student, create an empty student
-        ime: '',
-        adresa: '',
-        zgrada: '',
-      });
-
-    this.mode = 'ADD'
+    
   }
 
   ngOnInit() {
