@@ -15,7 +15,7 @@ import { Korisnik } from '../model/korisnik.model';
   styleUrls: ['./stan-detail.component.css']
 })
 export class StanDetailComponent implements OnInit {
-  stan = new Stan({ // if we add a new student, create an empty student
+  stan = new Stan({ // if we add a new student, create an empty student 
     ime: '',
     adresa: '',
     zgrada : new Zgrada({
@@ -28,6 +28,7 @@ export class StanDetailComponent implements OnInit {
         uloga: '',
       })
     }),
+    brStanovnika: '',
     vlasnik: new Korisnik({
       ime: '',
       lozinka: '',

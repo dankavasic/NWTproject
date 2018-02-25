@@ -12,6 +12,7 @@
   </head>
   <table>
     <tr>
+      <th>Id</th>
       <th>Ime</th>
       <th>Adresa</th>
       <th>Broj stanovnika</th>
@@ -19,6 +20,9 @@
       <th>Zgrada</th>
     </tr>
     <tr *ngFor="let stan of stanovi">
+      <td>
+        {{stan.id}}
+      </td>
       <td>
         {{stan.ime}}
       </td>
