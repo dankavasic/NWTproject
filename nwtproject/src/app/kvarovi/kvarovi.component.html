@@ -12,6 +12,7 @@
   </head>
   <table>
     <tr>
+      <th>Id</th>
       <th>Ime</th>
       <th>Opis</th>
       <th>Datum kreiranja</th>
@@ -20,7 +21,8 @@
       <th>Kreator</th>
       <th>Radnik</th>
     </tr>
-    <tr *ngFor="let kvar of kvarovi">
+    <tr *ngFor="let kvar of kvar">
+      <td>{{kvar.id}}</td>
       <td>{{kvar.ime}}</td>
       <td>{{kvar.opis}}</td>
       <td>{{kvar.datKreiranja}}</td>
@@ -29,11 +31,11 @@
       <td>{{kvar.kreator.ime}}</td>
       <td>{{kvar.radnik.ime}}</td>
       <td>
-        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(zgrada)">
+        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(kvar)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
         </button>
   
-        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteZgrada(zgrada.id)">
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteKvar(kvar.id)">
           <i class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></i>
         </button>
       </td>

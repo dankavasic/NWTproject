@@ -16,26 +16,31 @@ import { KvarService } from '../kvarovi/kvarovi.service';
   styleUrls: ['./zgrada-detail.component.css']
 })
 export class ZgradaDetailComponent implements OnInit {
-  zgrada = new Zgrada({ // if we add a new student, create an empty student
-    ime: '',
-    adresa: '',
-    vlasnik: new Korisnik({
-      ime: '',
-      lozinka: '',
-      korisIme: '',
-      uloga: '',
-    })
-  });
-
-  mode: string = 'ADD';
-
+  
+  zgrada: Zgrada;
+  mode: string;
   kvarovi: Kvar[];
 
   constructor(private zgradaService: ZgradaService, private kvarService: KvarService,
      private route: ActivatedRoute, private location: Location, private router: Router) {
-      zgradaService.RegenerateData$.subscribe(() =>
+     /* zgradaService.RegenerateData$.subscribe(() =>
         this.getKvarovi()
-     );
+     );*/
+     this.zgrada = new Zgrada({ // if we add a new student, create an empty student
+      ime: '',
+      adresa: '',
+      brStanova: null,
+      brNaseljenih: null,
+      vlasnik: new Korisnik({
+        ime: '',
+        lozinka: '',
+        korisIme: '',
+        uloga: '',
+      })
+    });
+  
+    this.mode = 'ADD';
+
   }
 
   ngOnInit() {
@@ -66,7 +71,7 @@ export class ZgradaDetailComponent implements OnInit {
     this.zgradaService.addZgrada(this.zgrada)
       .then(zgrada => {
         this.zgradaService.announceChange();
-        this.goBack();
+        this.zgradaService.getZgrade();
       });
   }
 

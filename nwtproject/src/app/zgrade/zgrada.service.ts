@@ -32,7 +32,7 @@ export class ZgradaService {
     }
 
     getZgrada(id: number): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}/all/${id}`;
+        const url = `${this.zgradeUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
@@ -49,7 +49,7 @@ export class ZgradaService {
     }
 
     editZgrada(zgrada: Zgrada): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}/all/${zgrada.id}`;
+        const url = `${this.zgradeUrl}`;
         return this.http
             .put(url, JSON.stringify(zgrada), { headers: this.headers })
             .toPromise()

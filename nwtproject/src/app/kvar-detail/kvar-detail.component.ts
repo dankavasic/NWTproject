@@ -24,41 +24,11 @@ export class KvarDetailComponent implements OnInit {
   ngbDatZakazivanja: NgbDateStruct;
   ngbDatPopravke: NgbDateStruct;
   
-  kvar: Kvar = new Kvar({ // if we add a new course, create an empty course
-    
-    datKreiranja: null,
-    datZakazivanja: null,	
-    datPopravke: null,
-    ime: '',
-    opis: '',
-    popravljen: false,
-    kreator: new Korisnik({
-      ime: '',
-      lozinka: '',
-      korisIme: '',
-      uloga: '',
-    }),
-    zgrada: new Zgrada({
-      ime: '',
-      adresa: '',
-      vlasnik: new Korisnik({
-        ime: '',
-        lozinka: '',
-        korisIme: '',
-        uloga: '',
-      })
-    }),
-    radnik: new Korisnik({
-      ime: '',
-      lozinka: '',
-      korisIme: '',
-      uloga: '',
-    })
-  });
+  kvar: Kvar;
 
   //komentari: Komentar[];
 
-  mode: string = 'ADD';
+  mode: string;
 
   constructor(private kvarService: KvarService, private zgradaService: ZgradaService,
     private korisnikService: KorisnikService,
@@ -66,6 +36,40 @@ export class KvarDetailComponent implements OnInit {
     /*komentarService.RegenerateData$.subscribe(() =>
       this.getEnrollments()
     );*/
+    this.kvar = new Kvar({ // if we add a new course, create an empty course
+    
+      datKreiranja: null,
+      datZakazivanja: null,	
+      datPopravke: null,
+      ime: '',
+      opis: '',
+      popravljen: false,
+      kreator: new Korisnik({
+        ime: '',
+        lozinka: '',
+        korisIme: '',
+        uloga: '',
+      }),
+      zgrada: new Zgrada({
+        ime: '',
+        adresa: '',
+        brStanova: null,
+        brNaseljenih: null,
+        vlasnik: new Korisnik({
+          ime: '',
+          lozinka: '',
+          korisIme: '',
+          uloga: '',
+        })
+      }),
+      radnik: new Korisnik({
+        ime: '',
+        lozinka: '',
+        korisIme: '',
+        uloga: '',
+      })
+    });
+    this.mode = 'ADD';
   }
 
   ngOnInit() {

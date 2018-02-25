@@ -17,10 +17,10 @@ export class Kvar implements KvarInterface{
 	constructor(kvarCfg: KvarInterface)
 	{	
         this.id = kvarCfg.id;
+        this.ime = kvarCfg.ime;
         this.datKreiranja = kvarCfg.datKreiranja;
         this.datZakazivanja = kvarCfg.datZakazivanja;
-        this.datPopravke = kvarCfg.datPopravke
-        this.ime = kvarCfg.ime;
+        this.datPopravke = kvarCfg.datPopravke;
         this.opis = kvarCfg.opis;
         this.popravljen = kvarCfg.popravljen;
         this.kreator = kvarCfg.kreator;
@@ -30,11 +30,11 @@ export class Kvar implements KvarInterface{
 }
 
 interface KvarInterface{
-	id?: number;
+    id?: number;
+    ime: string;
 	datKreiranja: Date;
 	datZakazivanja: Date;	
     datPopravke: Date;
-    ime: string;
     opis: string;
     popravljen: boolean;
     kreator: Korisnik;

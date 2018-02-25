@@ -21,6 +21,8 @@ export class StanDetailComponent implements OnInit {
     zgrada : new Zgrada({
       ime: '',
       adresa: '',
+      brStanova: null,
+      brNaseljenih: null,
       vlasnik: new Korisnik({
         ime: '',
         lozinka: '',

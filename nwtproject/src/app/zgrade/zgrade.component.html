@@ -12,28 +12,20 @@
   </head>
   <table>
     <tr>
+      <th>Id</th>
       <th>Ime</th>
       <th>Adresa</th>
-      <th>Vlasnik</th>
       <th>Broj stanova</th>
       <th>Broj naseljenih</th>
+      <th>Vlasnik</th>
     </tr>
     <tr *ngFor="let zgrada of zgrade">
-      <td>
-        <a class="nav-link" [routerLink]="['/kvarovi']">{{zgrada.ime}}</a>
-      </td>
-      <td>
-        {{zgrada.adresa}}
-      </td>
-      <td>
-        {{zgrada.vlasnik.ime}}
-      </td>
-      <td>
-        {{zgrada.brStanova}}
-      </td>
-      <td>
-        {{zgrada.brNaseljenih}}
-      </td>
+      <td>{{zgrada.id}}</td>
+      <td><a class="nav-link" [routerLink]="['/kvarovi']">{{zgrada.ime}}</a></td>
+      <td>{{zgrada.adresa}}</td>
+      <td>{{zgrada.brStanova}}</td>
+      <td>{{zgrada.brNaseljenih}}</td>
+      <td>{{zgrada.vlasnik.ime}}</td>
       <td>
         <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(zgrada)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>

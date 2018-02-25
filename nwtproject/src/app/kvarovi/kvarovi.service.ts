@@ -22,7 +22,7 @@ export class KvarService {
     }
 
     getKvarovi(): Promise<Kvar[]> {
-        return this.http.get(this.kvaroviUrl)
+        return this.http.get("api/kvar/all")
             .toPromise()
             .then(response =>
                 response.json() as Kvar[])
@@ -30,7 +30,7 @@ export class KvarService {
     }
 
     getKvar(id: number): Promise<Kvar> {
-        const url = `${this.kvaroviUrl}/${id}`;
+        const url = `${this.kvaroviUrl}/all/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
