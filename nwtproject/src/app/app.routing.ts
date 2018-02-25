@@ -10,6 +10,7 @@ import { FirmaDetailComponent } from './firma-detail/firma-detail.component';
 import { StanDetailComponent } from './stan-detail/stan-detail.component';
 import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
 import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
+import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
 
 const routes: Routes = [
   { path: 'zgrade', component: ZgradeComponent },
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path: 'editKorisnik/:id', component:KorisnikDetailComponent},
   {path: 'addKvar', component:ZgradaDetailComponent},
   {path: 'editKvar/:id', component:KvarDetailComponent},
+  {path: 'addKomentar', component:KomentarDetailComponent},
+  {path: 'editKomentar/:id', component:KomentarDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

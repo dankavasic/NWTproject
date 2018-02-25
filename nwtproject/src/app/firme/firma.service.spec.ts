@@ -163,6 +163,7 @@ describe('FirmaService', () => {
         {
           id: 1,
           ime: 'firma1',
+          adresa: 'Beogradska 4',
           telefon: 13567,
           email: 'firma1@gmail.com',
           webSite: 'firma1.com'            
@@ -172,6 +173,7 @@ describe('FirmaService', () => {
      expect(firma).toBeDefined();
      expect(firma.id).toEqual(1);
      expect(firma.ime).toEqual('a123');
+     expect(firma.adresa).toEqual('Beogradska 4');
      expect(firma.telefon).toEqual(13567);
      expect(firma.email).toEqual('firma1@gmail.com');
      expect(firma.webSite).toEqual('firma1.com')

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-   <h3>Firme</h3>
+   <h3>Komentari</h3>
 </div>
 <head>
   <style>
@@ -12,34 +12,22 @@
   </head>
   <table>
     <tr>
-      <th>Ime</th>
-      <th>Adresa</th>
-      <th>Telefon</th>
-      <th>Email</th>
-      <th>Web site</th>
+      <th>Text</th>
+      <th>Datum kreiranja</th>
+      <th>Kreator</th>
+      <th>Kvar</th>
     </tr>
-    <tr *ngFor="let firma of firme">
+    <tr *ngFor="let komentar of komentari">
+      <td>{{komentar.text}}</td>
+      <td>{{komentar.datKreiranja}}</td>
+      <td>{{komentar.kreator.ime}}</td>
+      <td>{{komentar.kvar.ime}}</td>
       <td>
-        {{firma.ime}}
-      </td>
-      <td>
-        {{firma.adresa}}
-      </td>
-      <td>
-        {{firma.telefon}}
-      </td>
-      <td>
-        {{firma.email}}
-      </td>
-      <td>
-        {{firma.webSite}}
-      </td>
-      <td>
-        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(firma)">
+        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(zgrada)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
         </button>
   
-        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteFirma(firma.id)">
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteZgrada(zgrada.id)">
           <i class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></i>
         </button>
       </td>
@@ -49,5 +37,4 @@
     <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAdd()">
       <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
     </button>
-  </div> 
-  
+  </div>

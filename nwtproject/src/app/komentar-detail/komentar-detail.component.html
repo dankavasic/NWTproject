@@ -1,0 +1,45 @@
+<div>
+  <h3>Komentar</h3>
+</div>
+
+<div>
+  <form>
+    <div class="form-group">
+      <label for="field1c" class="form-control-label">Text</label>
+        <input type="text" [(ngModel)]="komentar.text" placeholder="Text" 
+        class="form-control" id="field1c" name="field1">
+</div>
+
+<div>
+  <form>
+    <div class="form-group">
+      <label for="field2c" class="form-control-label">Datum kreiranja</label>
+        <input type="text" [(ngModel)]="komentar.datKreiranja" placeholder="DatKreiranja" 
+        class="form-control" id="field2c" name="field2">
+</div>
+
+<div>
+  <form>
+    <div class="form-group">
+      <label for="field3c" class="form-control-label">Kreator</label>
+        <input type="text" [(ngModel)]="komentar.kreator.ime" placeholder="Kreator" 
+        class="form-control" id="field3c" name="field3">
+</div>
+
+<!--<div>
+  <form>
+    <div class="form-group">
+      <label for="field4c" class="form-control-label">Kvar</label>
+        <input type="text" [(ngModel)]="komentar.kvar.ime" placeholder="Kvar" 
+        class="form-control" id="field4c" name="field4">
+</div> -->
+
+
+
+</form>
+ 
+
+<div>
+  <button class="btn btn-primary" (click)="save()">OK</button>
+  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+</div>

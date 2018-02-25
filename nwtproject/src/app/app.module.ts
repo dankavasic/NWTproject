@@ -17,6 +17,9 @@ import {FirmaDetailComponent} from './firma-detail/firma-detail.component';
 import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
 import { StanDetailComponent } from './stan-detail/stan-detail.component';
 import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
+import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
+import { KomentariComponent } from './komentari/komentari.component';
+import { KomentarService } from './komentari/komentari.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
@@ -35,7 +38,8 @@ import { KvarService } from './kvarovi/kvarovi.service';
     StanDetailComponent,
     KorisnikDetailComponent,
     KvaroviComponent,
-    KvarDetailComponent
+    KvarDetailComponent,
+    KomentarDetailComponent
 
   ],
   imports: [  
@@ -45,7 +49,7 @@ import { KvarService } from './kvarovi/kvarovi.service';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService, FirmaService, KvarService],
+  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService],
   bootstrap: [AppComponent],
 
 })
