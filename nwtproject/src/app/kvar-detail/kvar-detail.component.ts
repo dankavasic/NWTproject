@@ -12,6 +12,8 @@ import 'rxjs/add/operator/switchMap';
 import { NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { ZgradaService } from '../zgrade/zgrada.service';
 import { KorisnikService } from '../korisnici/korisnik.service';
+import { Komentar } from '../model/komentar.model';
+import { KomentarService } from '../komentari/komentari.service';
 
 @Component({
   selector: 'app-kvar-detail',
@@ -26,16 +28,16 @@ export class KvarDetailComponent implements OnInit {
   
   kvar: Kvar;
 
-  //komentari: Komentar[];
+  komentari: Komentar[];
 
   mode: string;
 
   constructor(private kvarService: KvarService, private zgradaService: ZgradaService,
-    private korisnikService: KorisnikService,
+    private korisnikService: KorisnikService, private komentarService: KomentarService,
     private route: ActivatedRoute, private location: Location, private router: Router) {
-    /*komentarService.RegenerateData$.subscribe(() =>
-      this.getEnrollments()
-    );*/
+    komentarService.RegenerateData$.subscribe(() =>
+      this.getKomentari()
+    )
     this.kvar = new Kvar({ // if we add a new course, create an empty course
     
       datKreiranja: null,
@@ -61,13 +63,13 @@ export class KvarDetailComponent implements OnInit {
           korisIme: '',
           uloga: '',
         })
-      }),
-      radnik: new Korisnik({
+      })
+      /*radnik: new Korisnik({
         ime: '',
         lozinka: '',
         korisIme: '',
         uloga: '',
-      })
+      })*/
     });
     this.mode = 'ADD';
   }
@@ -81,15 +83,20 @@ export class KvarDetailComponent implements OnInit {
           this.kvarService.getKvar(+params['id']))
         .subscribe(kvar => {
           this.kvar = kvar;
-          //this.getKomentari();
+          this.getKomentari();
         });
+        this.route.queryParams.subscribe(params =>
+          this.zgradaService.getZgrada(params['zgradaId'])
+            .then(zgrada => 
+              this.kvar.zgrada = zgrada 
+            ));
     }
   }
 
-  /*private getKomentari(): void {
-    this.kvarService.getKvarKomentari(this.kvar.id).then(komentari =>
+  private getKomentari(): void {
+    this.kvarService.getKvarKomentar(this.kvar.id).then(komentari =>
       this.komentari = komentari);
-  }*/
+  }
 
 
   save(): void {
@@ -97,6 +104,10 @@ export class KvarDetailComponent implements OnInit {
   }
 
   private add(): void {
+    this.kvar.datKreiranja = new Date(this.ngbDatKreiranja.year, this.ngbDatKreiranja.month-1,this.ngbDatKreiranja.day);
+    this.kvar.datZakazivanja = new Date(this.ngbDatZakazivanja.year, this.ngbDatZakazivanja.month-1, this.ngbDatPopravke.day);
+    this.kvar.datPopravke = new Date(this.ngbDatPopravke.year, this.ngbDatPopravke.month-1,this.ngbDatPopravke.day);
+    
     this.kvarService.addKvar(this.kvar)
       .then(kvar => {
         this.kvarService.announceChange();
@@ -116,14 +127,14 @@ export class KvarDetailComponent implements OnInit {
     this.location.back();
   }
 
-  /*gotoAddKomentar(): void {
+  gotoAddKomentar(): void {
     this.router.navigate(['/addKomentar'], { queryParams: { kvarId: this.kvar.id } });
   }
 
   deleteKomentar(komentarId: number): void {
     this.komentarService.deleteKomentar(komentarId).then(
-      () => this.getKomentar()
+      () => this.getKomentari()
     );
-  }*/
+  }
 
 }

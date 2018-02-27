@@ -11,11 +11,13 @@ import { StanDetailComponent } from './stan-detail/stan-detail.component';
 import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
 import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
 import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
+import { KvaroviComponent } from './kvarovi/kvarovi.component';
 
 const routes: Routes = [
   { path: 'zgrade', component: ZgradeComponent },
   {path: 'stanovi', component: StanoviComponent},
   {path: 'firme', component: FirmeComponent},
+  {path: 'kvarovi', component:KvaroviComponent},
   {path: 'addZgrada', component:ZgradaDetailComponent},
   {path: 'editZgrada/:id', component:ZgradaDetailComponent},
   {path: 'firme', component: FirmeComponent},
@@ -24,7 +26,7 @@ const routes: Routes = [
   {path: 'editStan/:id', component:StanDetailComponent},
   {path: 'addKorisnik', component:KorisnikDetailComponent},
   {path: 'editKorisnik/:id', component:KorisnikDetailComponent},
-  {path: 'addKvar', component:ZgradaDetailComponent},
+  {path: 'addKvar', component:KvarDetailComponent},
   {path: 'editKvar/:id', component:KvarDetailComponent},
   {path: 'addKomentar', component:KomentarDetailComponent},
   {path: 'editKomentar/:id', component:KomentarDetailComponent},

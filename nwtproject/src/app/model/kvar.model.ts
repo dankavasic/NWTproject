@@ -1,6 +1,5 @@
 import { Zgrada } from './zgrada.model';
 import { Korisnik } from './korisnik.model';
-import {Firma} from './firma.model';
 
 export class Kvar implements KvarInterface{
 	id?: number;
@@ -12,7 +11,7 @@ export class Kvar implements KvarInterface{
     popravljen: boolean;
     kreator: Korisnik;
     zgrada: Zgrada;
-    radnik: Korisnik;
+    //radnik: Korisnik;
 
 	constructor(kvarCfg: KvarInterface)
 	{	
@@ -24,7 +23,7 @@ export class Kvar implements KvarInterface{
         this.opis = kvarCfg.opis;
         this.popravljen = kvarCfg.popravljen;
         this.kreator = kvarCfg.kreator;
-        this.radnik = kvarCfg.radnik;
+        //this.radnik = kvarCfg.radnik;
         this.zgrada = kvarCfg.zgrada;				
 	}
 }
@@ -39,5 +38,5 @@ interface KvarInterface{
     popravljen: boolean;
     kreator: Korisnik;
     zgrada: Zgrada;
-    radnik: Korisnik;
+    //radnik: Korisnik;
 }

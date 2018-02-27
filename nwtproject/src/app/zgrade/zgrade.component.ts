@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { Zgrada } from '../model/zgrada.model';
 import { ZgradaService } from './zgrada.service';
+import { KvarService } from '../kvarovi/kvarovi.service';
+import { StanService } from '../stanovi/stan.service';
 
 @Component({
   selector: 'zgrade-list',
@@ -12,11 +14,12 @@ import { ZgradaService } from './zgrada.service';
 })
 export class ZgradeComponent implements OnInit {
 
-  zgrade: Zgrada[];
+  zgrada: Zgrada[];
 
   subscription: Subscription;
 
-  constructor(private zgradaService: ZgradaService, private router: Router) {
+  constructor(private kvarService: KvarService,private zgradaService: ZgradaService,
+    private stanService: StanService, private router: Router) {
     this.subscription = zgradaService.RegenerateData$.subscribe(() =>
       this.getZgrade()
     );
@@ -28,7 +31,7 @@ export class ZgradeComponent implements OnInit {
 
   getZgrade() {
     this.zgradaService.getZgrade().then(zgrade =>
-      this.zgrade = zgrade);
+      this.zgrada = zgrade);
   }
 
   gotoAdd(): void {
@@ -39,8 +42,8 @@ export class ZgradeComponent implements OnInit {
     this.router.navigate(['/editZgrada', zgrada.id]);
   }
 
-  deleteZgrada(zgradaId: number): void {
-    this.zgradaService.deleteZgrada(zgradaId).then(
+  deleteZgrada(zgradeId: number): void {
+    this.zgradaService.deleteZgrada(zgradeId).then(
       () => this.getZgrade()
     );
   }

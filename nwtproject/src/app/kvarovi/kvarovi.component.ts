@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Kvar } from '../model/kvar.model';
 import { KvarService } from './kvarovi.service';
+import { KomentarService } from '../komentari/komentari.service';
 
 @Component({
   selector: 'kvarovi-list',
@@ -16,7 +17,7 @@ export class KvaroviComponent implements OnInit {
 
   subscription: Subscription;
 
-  constructor(private kvarService: KvarService, private router: Router) {
+  constructor(private kvarService: KvarService,private komentarService: KomentarService, private router: Router) {
     this.subscription = kvarService.RegenerateData$.subscribe(() =>
       this.getKvarovi()
     );
@@ -33,7 +34,7 @@ export class KvaroviComponent implements OnInit {
 
   /*getKvar(id: number): void {
     this.kvarService.getKvar(id).then(
-      this.router.navigate(['/addKomentar']);
+      this.komentarService.getKomentar()
     )
   }*/
 

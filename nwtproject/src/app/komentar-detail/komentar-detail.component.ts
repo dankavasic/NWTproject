@@ -58,12 +58,6 @@ export class KomentarDetailComponent implements OnInit {
         korisIme: '',
         uloga: '',
       })
-    }),
-    radnik: new Korisnik({
-      ime: '',
-      lozinka: '',
-      korisIme: '',
-      uloga: '',
     })
     })
     
@@ -90,8 +84,12 @@ export class KomentarDetailComponent implements OnInit {
           this.komentarService.getKomentar(+params['id']))
         .subscribe(komentar => {
           this.komentar = komentar;
-          //this.getKomentari();
         });
+        this.route.queryParams.subscribe(params =>
+          this.kvarService.getKvar(params['kvarId'])
+            .then(kvar => 
+              this.komentar.kvar = kvar 
+            ));
     }
   }
 

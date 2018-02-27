@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { Zgrada } from '../model/zgrada.model';
 
 import 'rxjs/add/operator/toPromise';
+import { Stan } from '../model/stan.model';
 import { Kvar } from '../model/kvar.model';
 
 @Injectable()
@@ -23,8 +24,7 @@ export class ZgradaService {
     }
 
     getZgrade(): Promise<Zgrada[]> {
-        const url = 'api/zgrada/all';
-        return this.http.get(url)
+        return this.http.get("api/zgrada/all")
             .toPromise()
             .then(response =>
                 response.json() as Zgrada[])
@@ -49,9 +49,8 @@ export class ZgradaService {
     }
 
     editZgrada(zgrada: Zgrada): Promise<Zgrada> {
-        const url = `${this.zgradeUrl}`;
         return this.http
-            .put(url, JSON.stringify(zgrada), { headers: this.headers })
+            .put(this.zgradeUrl, JSON.stringify(zgrada), { headers: this.headers })
             .toPromise()
             .then(res => res.json() as Zgrada)
             .catch(this.handleError);
@@ -73,7 +72,14 @@ export class ZgradaService {
                 response.json() as Kvar[])
             .catch(this.handleError);
     }
-
+    getZgradaStan(zgradaId: number): Promise<Stan[]> {
+        const url = `${this.zgradeUrl}/${zgradaId}/stan`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response =>
+                response.json() as Stan[])
+            .catch(this.handleError);
+    }
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
         return Promise.reject(error.message || error);

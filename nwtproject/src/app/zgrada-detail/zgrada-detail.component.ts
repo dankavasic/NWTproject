@@ -9,6 +9,8 @@ import 'rxjs/add/operator/switchMap';
 import { Korisnik } from '../model/korisnik.model';
 import { Kvar } from '../model/kvar.model';
 import { KvarService } from '../kvarovi/kvarovi.service';
+import { StanService } from '../stanovi/stan.service';
+import { Stan } from '../model/stan.model';
 
 @Component({
   selector: 'app-zgrada-detail',
@@ -20,12 +22,17 @@ export class ZgradaDetailComponent implements OnInit {
   zgrada: Zgrada;
   mode: string;
   kvarovi: Kvar[];
+  stanovi: Stan[];
 
   constructor(private zgradaService: ZgradaService, private kvarService: KvarService,
+    private stanService: StanService,
      private route: ActivatedRoute, private location: Location, private router: Router) {
-     /* zgradaService.RegenerateData$.subscribe(() =>
+      stanService.RegenerateData$.subscribe(() =>
+        this.getStanovi()
+     ),
+      kvarService.RegenerateData$.subscribe(() =>
         this.getKvarovi()
-     );*/
+     ),
      this.zgrada = new Zgrada({ // if we add a new student, create an empty student
       ime: '',
       adresa: '',
@@ -52,9 +59,9 @@ export class ZgradaDetailComponent implements OnInit {
           this.zgradaService.getZgrada(+params['id'])) // convert to number
         .subscribe(zgrada => {
           this.zgrada = this.zgrada;
-          this.getKvarovi;
-          }
-        );
+          this.getKvarovi();
+          this.getStanovi();
+          });
     } 
   }
 
@@ -63,6 +70,10 @@ export class ZgradaDetailComponent implements OnInit {
       this.kvarovi = kvarovi);
   }
 
+  private getStanovi(): void {
+    this.zgradaService.getZgradaStan(this.zgrada.id).then(stanovi =>
+      this.stanovi = stanovi);
+  }
   save(): void {
     this.mode == 'ADD' ? this.add() : this.edit();    
   }
@@ -71,7 +82,7 @@ export class ZgradaDetailComponent implements OnInit {
     this.zgradaService.addZgrada(this.zgrada)
       .then(zgrada => {
         this.zgradaService.announceChange();
-        this.zgradaService.getZgrade();
+        this.goBack();
       });
   }
 
@@ -94,6 +105,15 @@ export class ZgradaDetailComponent implements OnInit {
   deleteKvar(kvarId: number): void {
     this.kvarService.deleteKvar(kvarId).then(
       () => this.getKvarovi()
+    );
+  }
+  gotoAddStan(): void {
+    this.router.navigate(['/addStan'], { queryParams: { zgradaId: this.zgrada.id } });
+  }
+
+  deleteStan(stanId: number): void {
+    this.stanService.deleteStan(stanId).then(
+      () => this.getStanovi()
     );
   }
 }

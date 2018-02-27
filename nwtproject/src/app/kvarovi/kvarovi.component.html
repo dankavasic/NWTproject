@@ -19,17 +19,17 @@
       <th>Datum zakazivanja</th>
       <th>Datum popravke</th>
       <th>Kreator</th>
-      <th>Radnik</th>
+      
     </tr>
     <tr *ngFor="let kvar of kvar">
       <td>{{kvar.id}}</td>
       <td>{{kvar.ime}}</td>
       <td>{{kvar.opis}}</td>
-      <td>{{kvar.datKreiranja}}</td>
-      <td>{{kvar.datZakazivanja}}</td>
-      <td>{{kvar.datPopravke}}</td>
-      <td>{{kvar.kreator.ime}}</td>
-      <td>{{kvar.radnik.ime}}</td>
+      <td>{{kvar.DatKreiranja}}</td>
+      <td>{{kvar.DatZakazivanja}}</td>
+      <td>{{kvar.DatPopravke}}</td>
+      <td>{{kvar.kreator.korisIme}}</td>
+      
       <td>
         <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(kvar)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>

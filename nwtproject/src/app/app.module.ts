@@ -25,6 +25,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
 import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
 import { KvarService } from './kvarovi/kvarovi.service';
+import { KorisnikService } from './korisnici/korisnik.service';
+import { KorisniciComponent } from './korisnici/korisnici.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { KvarService } from './kvarovi/kvarovi.service';
     KorisnikDetailComponent,
     KvaroviComponent,
     KvarDetailComponent,
-    KomentarDetailComponent
+    KomentarDetailComponent,
+    KorisniciComponent
 
   ],
   imports: [  
@@ -49,7 +52,7 @@ import { KvarService } from './kvarovi/kvarovi.service';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService],
+  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService, KorisnikService],
   bootstrap: [AppComponent],
 
 })

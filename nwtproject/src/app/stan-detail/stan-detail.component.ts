@@ -8,6 +8,7 @@ import { Stan } from '../model/stan.model';
 import 'rxjs/add/operator/switchMap';
 import { Zgrada } from '../model/zgrada.model';
 import { Korisnik } from '../model/korisnik.model';
+import { ZgradaService } from '../zgrade/zgrada.service';
 
 @Component({
   selector: 'app-stan-detail',
@@ -15,34 +16,36 @@ import { Korisnik } from '../model/korisnik.model';
   styleUrls: ['./stan-detail.component.css']
 })
 export class StanDetailComponent implements OnInit {
-  stan = new Stan({ // if we add a new student, create an empty student 
-    ime: '',
-    adresa: '',
-    zgrada : new Zgrada({
-      ime: '',
-      adresa: '',
-      brStanova: null,
-      brNaseljenih: null,
-      vlasnik: new Korisnik({
+  stan: Stan;
+  
+  mode: string;  
+
+  constructor(private stanService: StanService,private zgradaService: ZgradaService,
+     private route: ActivatedRoute, private location: Location) {
+      this.stan = new Stan({ // if we add a new student, create an empty student 
         ime: '',
-        lozinka: '',
-        korisIme: '',
-        uloga: '',
-      })
-    }),
-    brStanovnika: '',
-    vlasnik: new Korisnik({
-      ime: '',
-      lozinka: '',
-      korisIme: '',
-      uloga: '',
-    })
-  });
-
-  mode: string='ADD';    
-
-  constructor(private stanService: StanService, private route: ActivatedRoute, private location: Location) {
-    
+        adresa: '',
+        zgrada : new Zgrada({
+          ime: '',
+          adresa: '',
+          brStanova: null,
+          brNaseljenih: null,
+          vlasnik: new Korisnik({
+            ime: '',
+            lozinka: '',
+            korisIme: '',
+            uloga: '',
+          })
+        }),
+        brStanovnika: '',
+        vlasnik: new Korisnik({
+          ime: '',
+          lozinka: '',
+          korisIme: '',
+          uloga: '',
+        })
+      });
+    this.mode = 'ADD';
   }
 
   ngOnInit() {
@@ -56,6 +59,11 @@ export class StanDetailComponent implements OnInit {
           this.stan = this.stan;
           }
         );
+        this.route.queryParams.subscribe(params =>
+          this.zgradaService.getZgrada(params['zgradaId'])
+            .then(zgrada => 
+              this.stan.zgrada = zgrada 
+            ))
     } 
   }
 

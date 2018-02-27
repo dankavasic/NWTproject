@@ -19,9 +19,9 @@
       <th>Broj naseljenih</th>
       <th>Vlasnik</th>
     </tr>
-    <tr *ngFor="let zgrada of zgrade">
+    <tr *ngFor="let zgrada of zgrada">
       <td>{{zgrada.id}}</td>
-      <td><a class="nav-link" [routerLink]="['/kvarovi']">{{zgrada.ime}}</a></td>
+      <td>{{zgrada.ime}}</td>
       <td>{{zgrada.adresa}}</td>
       <td>{{zgrada.brStanova}}</td>
       <td>{{zgrada.brNaseljenih}}</td>

@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { Kvar } from '../model/kvar.model';
 
 import 'rxjs/add/operator/toPromise';
+import { Komentar } from '../model/komentar.model';
 
 @Injectable()
 export class KvarService {
@@ -30,7 +31,7 @@ export class KvarService {
     }
 
     getKvar(id: number): Promise<Kvar> {
-        const url = `${this.kvaroviUrl}/all/${id}`;
+        const url = `${this.kvaroviUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
@@ -62,14 +63,14 @@ export class KvarService {
             .catch(this.handleError);
     }
 
-    /*getKvarKomentar(kvarId: number): Promise<Komentar[]> {
-        const url = `${this.kvaroviUrl}/${kvarId}/komentar/all`;
+    getKvarKomentar(kvarId: number): Promise<Komentar[]> {
+        const url = `${this.kvaroviUrl}/${kvarId}/komentar`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
                 response.json() as Komentar[])
             .catch(this.handleError);
-    } */
+    }
 
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
