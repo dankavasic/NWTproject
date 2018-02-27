@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-   <h3>Zgrade</h3>
+   <h3>Obavestenja</h3>
 </div>
 <head>
   <style>
@@ -14,26 +14,26 @@
     <tr>
       <th>Id</th>
       <th>Ime</th>
-      <th>Adresa</th>
-      <th>Broj stanova</th>
-      <th>Broj naseljenih</th>
-      <th>Vlasnik</th>
+      <th>Opis</th>
+      <th>Datum kreiranja</th>
+      <th>Kreator</th>
+      <th>Zgrada</th>
       
     </tr>
-    <tr *ngFor="let zgrada of zgrade">
-      <td>{{zgrada.id}}</td>
-      <td>{{zgrada.ime}}</td>
-      <td>{{zgrada.adresa}}</td>
-      <td>{{zgrada.brStanova}}</td>
-      <td>{{zgrada.brNaseljenih}}</td>
-      <td>{{zgrada.vlasnik.korisIme}}</td>
+    <tr *ngFor="let obavestenje of obavestenja">
+      <td>{{obavestenje.id}}</td>
+      <td>{{obavestenje.ime}}</td>
+      <td>{{obavestenje.opis}}</td>
+      <td>{{obavestenje.DatKreiranja}}</td>
+      <td>{{obavestenje.kreator.korisIme}}</td>
+      <td>{{obavestenje.zgrada.ime}}</td>
       
       <td>
-        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(zgrada)">
+        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(obavestenje)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
         </button>
   
-        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteZgrada(zgrada.id)">
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteObavestenje(obavestenje.id)">
           <i class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></i>
         </button>
       </td>

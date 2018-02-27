@@ -14,6 +14,8 @@ import { KomentarDetailComponent } from './komentar-detail/komentar-detail.compo
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
 import {SednicaDetailComponent} from './sednica-detail/sednica-detail.component';
 import {SedniceComponent } from './sednice/sednice.component';
+import { ObavestenjaComponent } from './obavestenja/obavestenja.component';
+import { ObavestenjeDetailComponent } from './obavestenje-detail/obavestenje-detail.component';
 
 const routes: Routes = [
   { path: 'zgrade', component: ZgradeComponent },
@@ -35,6 +37,9 @@ const routes: Routes = [
   {path: 'editKomentar/:id', component:KomentarDetailComponent},
   {path: 'addSednica', component: SednicaDetailComponent},
   {path:'editSednica/:id', component: SednicaDetailComponent},
+  { path: 'obavestenja', component: ObavestenjaComponent },
+  {path: 'addObavestenje', component: ObavestenjeDetailComponent},
+  {path:'editObavestenje/:id', component: ObavestenjeDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

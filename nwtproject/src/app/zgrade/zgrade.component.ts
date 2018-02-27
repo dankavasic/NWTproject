@@ -3,9 +3,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 
 import { Zgrada } from '../model/zgrada.model';
-import { ZgradaService } from './zgrada.service';
+import { ZgradaService } from './zgrade.service';
 import { KvarService } from '../kvarovi/kvarovi.service';
 import { StanService } from '../stanovi/stan.service';
+import { ObavestenjeService } from '../obavestenja/obavestenja.service';
 
 @Component({
   selector: 'zgrade-list',
@@ -14,14 +15,14 @@ import { StanService } from '../stanovi/stan.service';
 })
 export class ZgradeComponent implements OnInit {
 
-  zgrada: Zgrada[];
+  zgrade: Zgrada[];
 
   subscription: Subscription;
 
-  constructor(private kvarService: KvarService,private zgradaService: ZgradaService,
-    private stanService: StanService, private router: Router) {
-    this.subscription = zgradaService.RegenerateData$.subscribe(() =>
-      this.getZgrade()
+  constructor(private zgradaService: ZgradaService,private kvarService: KvarService,
+    private StanService: StanService, private obavestenjeService: ObavestenjeService, private router: Router) {
+    this.subscription = kvarService.RegenerateData$.subscribe(() =>
+      this.getZgrade(),
     );
   }
 
@@ -31,7 +32,7 @@ export class ZgradeComponent implements OnInit {
 
   getZgrade() {
     this.zgradaService.getZgrade().then(zgrade =>
-      this.zgrada = zgrade);
+      this.zgrade = zgrade);
   }
 
   gotoAdd(): void {
@@ -42,7 +43,7 @@ export class ZgradeComponent implements OnInit {
     this.router.navigate(['/editZgrada', zgrada.id]);
   }
 
-  deleteZgrada(zgradeId: number): void {
+  deleteKvar(zgradeId: number): void {
     this.zgradaService.deleteZgrada(zgradeId).then(
       () => this.getZgrade()
     );

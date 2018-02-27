@@ -8,6 +8,7 @@ import { Sednica } from '../model/sednica.model';
 import 'rxjs/add/operator/switchMap';
 import { Zgrada } from '../model/zgrada.model';
 import { Korisnik } from '../model/korisnik.model';
+import { ZgradaService } from '../zgrade/zgrade.service';
 
 @Component({
   selector: 'app-sednica-detail',
@@ -42,7 +43,8 @@ export class SednicaDetailComponent implements OnInit {
 
   mode: string='ADD';    
 
-  constructor(private sednicaService: SednicaService, private route: ActivatedRoute, private location: Location) {
+  constructor(private zgradaService: ZgradaService, private sednicaService: SednicaService, 
+    private route: ActivatedRoute, private location: Location) {
     
   }
 
@@ -57,6 +59,11 @@ export class SednicaDetailComponent implements OnInit {
           this.sednica = sednica;
           }
         );
+        this.route.queryParams.subscribe(params =>
+          this.zgradaService.getZgrada(params['zgradaId'])
+            .then(zgrada => 
+              this.sednica.zgrada = zgrada 
+            ));
     } 
   }
 

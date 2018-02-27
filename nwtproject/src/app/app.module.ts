@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { AppComponent } from './app.component';
 import { ZgradeComponent } from './zgrade/zgrade.component';
-import { ZgradaService } from './zgrade/zgrada.service';
+import { ZgradaService } from './zgrade/zgrade.service';
 import {StanoviComponent}from './stanovi/stanovi.component';
 import { StanService} from './stanovi/stan.service';
 import {FirmeComponent} from './firme/firme.component';
@@ -30,6 +30,9 @@ import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
 import { KvarService } from './kvarovi/kvarovi.service';
 import { KorisnikService } from './korisnici/korisnik.service';
 import { KorisniciComponent } from './korisnici/korisnici.component';
+import { ObavestenjaComponent } from './obavestenja/obavestenja.component';
+import { ObavestenjeDetailComponent } from './obavestenje-detail/obavestenje-detail.component';
+import { ObavestenjeService } from './obavestenja/obavestenja.service';
 
 
 @NgModule({
@@ -47,7 +50,9 @@ import { KorisniciComponent } from './korisnici/korisnici.component';
     KomentarDetailComponent,
     KorisniciComponent,
     SedniceComponent,
-    SednicaDetailComponent
+    SednicaDetailComponent,
+    ObavestenjaComponent,
+    ObavestenjeDetailComponent
 
   ],
   imports: [  
@@ -57,7 +62,8 @@ import { KorisniciComponent } from './korisnici/korisnici.component';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService, KorisnikService,SednicaService],
+  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService,
+    ObavestenjeService, KorisnikService,SednicaService],
   bootstrap: [AppComponent],
 
 })

@@ -1,29 +1,29 @@
-import { Korisnik } from "./korisnik.model";
+import { Korisnik } from './korisnik.model';
 
 export class Zgrada implements ZgradaInterface{
-	public id: number;
-	public ime: string;
-	public adresa: string;
-	public brStanova: number;
-	public brNaseljenih: number;
-	public vlasnik: Korisnik;
-		
+	id?: number;
+    adresa: string;
+    brNaseljenih: number;
+    brStanova: number;
+    ime: string;
+    vlasnik: Korisnik;
+    
 	constructor(zgradaCfg: ZgradaInterface)
 	{	
-		this.id = zgradaCfg.id;
-		this.ime = zgradaCfg.ime;
-		this.adresa = zgradaCfg.adresa;
-		this.brStanova = zgradaCfg.brStanova;
-		this.brNaseljenih = zgradaCfg.brNaseljenih;
-		this.vlasnik = zgradaCfg.vlasnik;
+        this.id = zgradaCfg.id;
+        this.adresa = zgradaCfg.adresa;
+        this.brNaseljenih = zgradaCfg.brNaseljenih;
+        this.brStanova = zgradaCfg.brStanova;
+        this.ime = zgradaCfg.ime;
+        this.vlasnik = zgradaCfg.vlasnik;
 	}
 }
 
-interface ZgradaInterface {
-	id?: number;
-	ime: string;
-	adresa: string;
-	brStanova: number;
-	brNaseljenih: number;
-	vlasnik: Korisnik;
+interface ZgradaInterface{
+    id?: number;
+    adresa: string;
+    brNaseljenih: number;
+    brStanova: number;
+    ime: string;
+    vlasnik: Korisnik;
 }

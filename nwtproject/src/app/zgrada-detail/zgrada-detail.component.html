@@ -1,93 +1,191 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-  <h3>Zgrada</h3>
+  <h3>Zgrada {{zgrada.ime}}</h3>
 </div>
-  
-<div>  
-  <form >
+<head>
+  <style>
+  table, th, td {
+    border-right: 2px solid rgb(208, 236, 197);
+  }
+  </style>
+</head>
+
+<div>
+  <form>
     <div class="form-group">
-        <label for="field1c" class="form-control-label">Id</label>
-        <input type="text" [(ngModel)]="zgrada.id" placeholder=id 
-          class="form-control" id="field1c" name="field1">
+      <label for="field1c" class="form-control-label">Id</label>
+      <input type="text" [(ngModel)]="zgrada.id" placeholder=id 
+        class="form-control" id="field1c" name="field1">
     </div>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Ime</label>
-      <input type="text" [(ngModel)]="zgrada.ime" placeholder=ime
-          class="form-control" id="field2c" name="field2">
+      <label for="field2c" class="form-control-label">Ime</label>
+      <input type="text" [(ngModel)]="zgrada.ime" placeholder="Name" 
+        class="form-control" id="field2c" name="field2">
     </div>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Adresa</label>
-        <input type="text" [(ngModel)]="zgrada.adresa" placeholder=adresa 
-          class="form-control" id="field3c" name="field3">
+      <label for="field3c" class="form-control-label">Adresa</label>
+      <input type="text" [(ngModel)]="zgrada.adresa" placeholder="Opis" 
+        class="form-control" id="field3c" name="field3">
     </div>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Broj stanova</label>
-      <input type="text" [(ngModel)]="zgrada.brStanova" placeholder=brStanova 
-          class="form-control" id="field4c" name="field4">
+      <label for="field4c" class="form-control-label">Broj stanova</label>
+      <input type="text" [(ngModel)]="zgrada.brStanova" placeholder="broj stanova" 
+        class="form-control" id="field4c" name="field4">
     </div>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Broj naseljenih</label>
-      <input type="text" [(ngModel)]="zgrada.brNaseljenih" placeholder="Broj naseljenih" 
-          class="form-control" id="field5c" name="field5">
+      <label for="field5c" class="form-control-label">Broj naseljenih</label>
+      <input type="text" [(ngModel)]="zgrada.brNaseljenih" placeholder="broj naseljenih" 
+        class="form-control" id="field5c" name="field5">
     </div>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Vlasnik</label>
-      <input type="text" [(ngModel)]="zgrada.vlasnik.korisIme" placeholder="Vlasnik" 
-                  class="form-control" id="field6c" name="field6">
+      <label for="field6c" class="form-control-label">Vlasnik</label>
+      <input type="text" [(ngModel)]="zgrada.vlasnik.korisIme" placeholder="vlasnik" 
+        class="form-control" id="field6c" name="field6">
     </div>
   </form>
-  
   <div *ngIf="zgrada.id">
     <div>
-      <h3>kvarovi</h3>
-        <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKvar()">
-          <span class="fa fa-plus" aria-hidden="true"></span>
-        </button>
-    </div>
-    <table class="table table-bordered">
-      <tr *ngFor="let kvar of kvar">
-        <th>Kvar id</th>
-        <td>
-        {{kvar.id}} {{kvar.ime}} {{kvar.opis}} {{kvar.kreator.ime}} {{kvar.datKreiranja}} {{kvar.datZakazivanja}} {{kvar.datPopravke}} {{kvar.popravljen}}
-        </td>
-        <td>
-          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(kvar)">
-            <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
-          </button>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKvar(kvar.id)">
-            <span class="fa fa-remove" aria-hidden="true"></span>
-          </button>
-        </td>
-      </tr>
-    </table>   
-  </div>
-
-  <div *ngIf="zgrada.id">
-    <div>
-      <h3>Stanovi u zgradi {{zgrada.id}}  {{zgrada.ime}}</h3>
-      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddStan()">
-        <span class="fa fa-plus" aria-hidden="true"></span>
+      <h3>Kvarovi</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKvar()">
+        <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered">
-      <tr *ngFor="let stan of stanovi">
+      <tr>
+        <th>Broj kvara</th>
+        <th>Ime</th>
+        <th>Datum kreiranja</th>
+        <th>Datum zakazivanja</th>
+        <th>Datum popravke</th>
+        <th>Kreator</th>
+      </tr>
+      <tr *ngFor="let kvar of kvar">
+        <td>{{kvar.id}}</td>
+        <td>{{kvar.ime}}</td>
+        <td>{{kvar.opis}}</td>
+        <td>{{kvar.datKreiranja}}</td>
+        <td>{{kvar.datZakazivanja}}</td>
+        <td>{{kvar.datPopravke}}</td>
+        <td>{{kvar.kreator.korisIme}}</td>
         <td>
-        {{stan.id}} {{stan.ime}} {{stan.adresa}} {{stan.brStanovnika}} {{stan.vlasnik.ime}}{{stan.zgrada.ime}}
+          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditKvar(kvar)">
+            <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>  
         </td>
         <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteStan(stan.id)">
-            <span class="fa fa-remove" aria-hidden="true"></span>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKvar(kvar.id)">
+            <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>
         </td>
       </tr>
     </table>   
   </div>
-</div>
+  <div *ngIf="zgrada.id">
+    <div>
+      <h3>Stanovi</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddStan()">
+        <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <tr>
+        <th>Broj stana</th>
+        <th>Ime</th>
+        <th>Adresa</th>
+        <th>Broj stanovnika</th>
+        <th>Vlasnik</th>
+      </tr>
+      <tr *ngFor="let stan of stanovi">
+        <td>{{stan.id}}</td>
+        <td>{{stan.ime}}</td>
+        <td>{{stan.adresa}}</td>
+        <td>{{stan.brStanovnika}}</td>
+        <td>{{stan.vlasnik.korisIme}}</td>
+        <td>
+          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditStan(stan)">
+            <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>  
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteStan(stan.id)">
+            <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>
+        </td>
+      </tr>
+    </table>   
+  </div>
+  <div *ngIf="zgrada.id">
+    <div>
+      <h3>Obavestenja</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddObavestenje()">
+        <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <tr>
+        <th>Broj obavestenja</th>
+        <th>Ime</th>
+        <th>Opis</th>
+        <th>Datum kreiranja</th>
+        <th>Kreator</th>
+      </tr>
+      <tr *ngFor="let obavestenje of obavestenja">
+        <td>{{obavestenje.id}}</td>
+        <td>{{obavestenje.ime}}</td>
+        <td>{{obavestenje.opis}}</td>
+        <td>{{obavestenje.datKreiranja}}</td>
+        <td>{{obavestenje.kreator.korisIme}}</td>
+        <td>
+          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditObavestenje(obavestenje)">
+            <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>  
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteObavestenje(obavestenje.id)">
+            <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>
+        </td>
+      </tr>
+    </table>   
+  </div>
+  <div *ngIf="zgrada.id">
+    <div>
+      <h3>Sednice</h3>
+      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddSednica()">
+        <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <tr>
+        <th>Broj sednice</th>
+        <th>Aktivna</th>
+        <th>Datum kreiranja</th>
+        <th>Datum zakazivanja</th>
+        <th>Kreator</th>
+      </tr>
+      <tr *ngFor="let sednica of sednice">
+        <td>{{sednica.id}}</td>
+        <td>{{sednica.aktivna}}</td>
+        <td>{{sednica.datKreiranja}}</td>
+        <td>{{sednica.datZakazivanja}}</td>
+        <td>{{sednica.kreator.korisIme}}</td>
+        <td>
+          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditSednica(sednica)">
+            <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>  
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteSednica(sednica.id)">
+            <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+          </button>
+        </td>
+      </tr>
+    </table>   
+  </div>
 
- 
-  
-  <div>
-    <button class="btn btn-primary" (click)="goBack()">Cancel</button>
-    <button class="btn btn-primary" (click)="save()">OK</button>
-  </div> 
+</div>
+<div>
+  <button class="btn btn-primary" (click)="save()" style="font-size:18px;color:darkgreen">OK</button>
+  <button class="btn btn-primary" (click)="goBack()" style="font-size:18px;color:darkgreen">Cancel</button>
+</div>

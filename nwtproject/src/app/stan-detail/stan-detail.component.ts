@@ -8,7 +8,7 @@ import { Stan } from '../model/stan.model';
 import 'rxjs/add/operator/switchMap';
 import { Zgrada } from '../model/zgrada.model';
 import { Korisnik } from '../model/korisnik.model';
-import { ZgradaService } from '../zgrade/zgrada.service';
+import { ZgradaService } from '../zgrade/zgrade.service';
 
 @Component({
   selector: 'app-stan-detail',

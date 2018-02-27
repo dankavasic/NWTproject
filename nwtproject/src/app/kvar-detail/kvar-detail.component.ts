@@ -10,7 +10,7 @@ import {Zgrada} from '../model/zgrada.model';
 
 import 'rxjs/add/operator/switchMap';
 import { NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import { ZgradaService } from '../zgrade/zgrada.service';
+import { ZgradaService } from '../zgrade/zgrade.service';
 import { KorisnikService } from '../korisnici/korisnik.service';
 import { Komentar } from '../model/komentar.model';
 import { KomentarService } from '../komentari/komentari.service';

@@ -1,16 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
-import { ZgradaService } from '../zgrade/zgrada.service';
-import { Zgrada } from '../model/zgrada.model';
+import { ZgradaService } from '../zgrade/zgrade.service';
+import {Korisnik} from '../model/korisnik.model';
+import {Zgrada} from '../model/zgrada.model';
 
 import 'rxjs/add/operator/switchMap';
-import { Korisnik } from '../model/korisnik.model';
 import { Kvar } from '../model/kvar.model';
 import { KvarService } from '../kvarovi/kvarovi.service';
-import { StanService } from '../stanovi/stan.service';
+import { KorisnikService } from '../korisnici/korisnik.service';
 import { Stan } from '../model/stan.model';
+import { StanService } from '../stanovi/stan.service';
+import { Obavestenje } from '../model/obavestenje.model';
+import { ObavestenjeService } from '../obavestenja/obavestenja.service';
+import { Sednica } from '../model/sednica.model';
+import { SednicaService } from '../sednice/sednica.service';
 
 @Component({
   selector: 'app-zgrada-detail',
@@ -18,26 +24,37 @@ import { Stan } from '../model/stan.model';
   styleUrls: ['./zgrada-detail.component.css']
 })
 export class ZgradaDetailComponent implements OnInit {
-  
+
   zgrada: Zgrada;
-  mode: string;
+
   kvarovi: Kvar[];
   stanovi: Stan[];
+  obavestenja: Obavestenje[];
+  sednice: Sednica[];
 
-  constructor(private zgradaService: ZgradaService, private kvarService: KvarService,
-    private stanService: StanService,
-     private route: ActivatedRoute, private location: Location, private router: Router) {
-      stanService.RegenerateData$.subscribe(() =>
-        this.getStanovi()
-     ),
-      kvarService.RegenerateData$.subscribe(() =>
-        this.getKvarovi()
-     ),
-     this.zgrada = new Zgrada({ // if we add a new student, create an empty student
-      ime: '',
+  mode: string;
+
+  constructor(private kvarService: KvarService, private zgradaService: ZgradaService, private sednicaService: SednicaService,
+    private korisnikService: KorisnikService, private stanService: StanService, private obavestenjeService: ObavestenjeService,
+    private route: ActivatedRoute, private location: Location, private router: Router) {
+    kvarService.RegenerateData$.subscribe(() =>
+      this.getKvarovi()
+    )
+    sednicaService.RegenerateData$.subscribe(() =>
+      this.getSednice()
+    )
+    stanService.RegenerateData$.subscribe(() =>
+      this.getStanovi()
+    )
+    obavestenjeService.RegenerateData$.subscribe(() =>
+      this.getObavestenja()
+    )
+    this.zgrada = new Zgrada({ // if we add a new course, create an empty course
+    
       adresa: '',
-      brStanova: null,
       brNaseljenih: null,
+      brStanova: null,
+      ime: '',
       vlasnik: new Korisnik({
         ime: '',
         lozinka: '',
@@ -45,24 +62,25 @@ export class ZgradaDetailComponent implements OnInit {
         uloga: '',
       })
     });
-  
     this.mode = 'ADD';
-
   }
 
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
-      this.mode = 'EDIT'; 
-      // fetch student if we edit the existing student
+      this.mode = 'EDIT';
+      // fetch course if we edit the existing course
       this.route.params
-        .switchMap((params: Params) => 
-          this.zgradaService.getZgrada(+params['id'])) // convert to number
+        .switchMap((params: Params) =>
+          this.zgradaService.getZgrada(+params['id']))
         .subscribe(zgrada => {
-          this.zgrada = this.zgrada;
+          this.zgrada = zgrada;
           this.getKvarovi();
           this.getStanovi();
-          });
-    } 
+          this.getObavestenja();
+          this.getSednice();
+
+        });
+    }
   }
 
   private getKvarovi(): void {
@@ -70,12 +88,22 @@ export class ZgradaDetailComponent implements OnInit {
       this.kvarovi = kvarovi);
   }
 
+  private getSednice(): void {
+    this.zgradaService.getZgradaSednica(this.zgrada.id).then(sednice =>
+      this.sednice = sednice);
+  }
+
   private getStanovi(): void {
     this.zgradaService.getZgradaStan(this.zgrada.id).then(stanovi =>
       this.stanovi = stanovi);
   }
+
+  private getObavestenja(): void {
+    this.zgradaService.getZgradaObavestenje(this.zgrada.id).then(obavestenja =>
+      this.obavestenja = obavestenja);
+  }
   save(): void {
-    this.mode == 'ADD' ? this.add() : this.edit();    
+    this.mode == 'ADD' ? this.add() : this.edit();
   }
 
   private add(): void {
@@ -101,19 +129,48 @@ export class ZgradaDetailComponent implements OnInit {
   gotoAddKvar(): void {
     this.router.navigate(['/addKvar'], { queryParams: { zgradaId: this.zgrada.id } });
   }
-
+  gotoEditkvar(kvar: Kvar): void {
+    this.router.navigate(['/editKvar', kvar.id],{ queryParams: { zgradaId: this.zgrada.id } });
+  }
   deleteKvar(kvarId: number): void {
     this.kvarService.deleteKvar(kvarId).then(
       () => this.getKvarovi()
     );
   }
+
+  gotoAddSednica(): void {
+    this.router.navigate(['/addSednica'], { queryParams: { zgradaId: this.zgrada.id } });
+  }
+  gotoEditSednica(sednica: Sednica): void {
+    this.router.navigate(['/editSednica', sednica.id],{ queryParams: { zgradaId: this.zgrada.id } });
+  }
+  deleteSednica(sednicaId: number): void {
+    this.sednicaService.deleteSednica(sednicaId).then(
+      () => this.getSednice()
+    );
+  }
+
   gotoAddStan(): void {
     this.router.navigate(['/addStan'], { queryParams: { zgradaId: this.zgrada.id } });
   }
-
+  gotoEditStan(stan: Stan): void {
+    this.router.navigate(['/editStan', stan.id],{ queryParams: { zgradaId: this.zgrada.id } });
+  }
   deleteStan(stanId: number): void {
     this.stanService.deleteStan(stanId).then(
       () => this.getStanovi()
+    );
+  }
+
+  gotoAddObavestenje(): void {
+    this.router.navigate(['/addObavestenje'], { queryParams: { zgradaId: this.zgrada.id } });
+  }
+  gotoEditObavestenje(obavestenje: Obavestenje): void {
+    this.router.navigate(['/editObavestenje', obavestenje.id],{ queryParams: { zgradaId: this.zgrada.id } });
+  }
+  deleteObavestenje(obavestenjeId: number): void {
+    this.obavestenjeService.deleteObavestenje(obavestenjeId).then(
+      () => this.getObavestenja()
     );
   }
 }

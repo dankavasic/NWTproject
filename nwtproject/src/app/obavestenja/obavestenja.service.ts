@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import { Stan } from '../model/stan.model';
+import { Obavestenje } from '../model/obavestenje.model';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class StanService {
-    private stanoviUrl = 'api/stan';
+export class ObavestenjeService {
+    private obavestenjaUrl = 'api/obavestenje';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -21,51 +21,49 @@ export class StanService {
         this.RegenerateData.next();
     }
 
-    getStanovi(): Promise<Stan[]> {
-        const url = 'api/stan/all';
-        return this.http.get(url)
+    getObavestenja(): Promise<Obavestenje[]> {
+        return this.http.get("api/obavestenje/all")
             .toPromise()
             .then(response =>
-                response.json() as Stan[])
-            .catch(this.handleError);
-    }
-    getStan(id: number): Promise<Stan> {
-        const url = `${this.stanoviUrl}/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response =>
-                response.json() as Stan)
-            .catch(this.handleError);
-    }
-    addStan(stan: Stan): Promise<Stan> {
-        return this.http
-            .post(this.stanoviUrl, JSON.stringify(stan), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json() as Stan)
-            .catch(this.handleError);
-    }
-    editStan(stan: Stan): Promise<Stan> {
-        const url = `${this.stanoviUrl}/all/${stan.id}`;
-        return this.http
-            .put(this.stanoviUrl, JSON.stringify(stan), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json() as Stan)
+                response.json() as Obavestenje[])
             .catch(this.handleError);
     }
 
-    deleteStan(stanId: number): Promise<{}> {
-        const url = `${this.stanoviUrl}/${stanId}`;
+    getObavestenje(id: number): Promise<Obavestenje> {
+        const url = `${this.obavestenjaUrl}/${id}`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response =>
+                response.json() as Obavestenje)
+            .catch(this.handleError);
+    }
+
+    addObavestenje(obavestenje: Obavestenje): Promise<Obavestenje> {
+        return this.http
+            .post(this.obavestenjaUrl, JSON.stringify(obavestenje), { headers: this.headers })
+            .toPromise()
+            .then(res => res.json() as Obavestenje)
+            .catch(this.handleError);
+    }
+
+    editObavestenje(obavestenje: Obavestenje): Promise<Obavestenje> {
+        return this.http
+            .put(this.obavestenjaUrl, JSON.stringify(obavestenje), { headers: this.headers })
+            .toPromise()
+            .then(res => res.json() as Obavestenje)
+            .catch(this.handleError);
+    }
+
+    deleteObavestenje(obavestenjeId: number): Promise<{}> {
+        const url = `${this.obavestenjaUrl}/${this.obavestenjaUrl}`;
         return this.http
             .delete(url)
             .toPromise()           
             .catch(this.handleError);
     }
 
-
-
-
     handleError(error: any): Promise<any> {
-        console.error("Greska...", error);
+        console.error("Error... ", error);
         return Promise.reject(error.message || error);
     }
 }
