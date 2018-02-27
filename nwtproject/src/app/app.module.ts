@@ -20,6 +20,9 @@ import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.compo
 import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
 import { KomentariComponent } from './komentari/komentari.component';
 import { KomentarService } from './komentari/komentari.service';
+import {SedniceComponent} from './sednice/sednice.component';
+import { SednicaDetailComponent } from './sednica-detail/sednica-detail.component';
+import {SednicaService} from './sednice/sednica.service';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
@@ -42,7 +45,9 @@ import { KorisniciComponent } from './korisnici/korisnici.component';
     KvaroviComponent,
     KvarDetailComponent,
     KomentarDetailComponent,
-    KorisniciComponent
+    KorisniciComponent,
+    SedniceComponent,
+    SednicaDetailComponent
 
   ],
   imports: [  
@@ -52,7 +57,7 @@ import { KorisniciComponent } from './korisnici/korisnici.component';
     HttpModule,
     routing
   ],
-  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService, KorisnikService],
+  providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService, KorisnikService,SednicaService],
   bootstrap: [AppComponent],
 
 })

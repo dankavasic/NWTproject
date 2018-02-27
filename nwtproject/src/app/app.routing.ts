@@ -12,12 +12,15 @@ import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.compo
 import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
 import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
+import {SednicaDetailComponent} from './sednica-detail/sednica-detail.component';
+import {SedniceComponent } from './sednice/sednice.component';
 
 const routes: Routes = [
   { path: 'zgrade', component: ZgradeComponent },
   {path: 'stanovi', component: StanoviComponent},
   {path: 'firme', component: FirmeComponent},
   {path: 'kvarovi', component:KvaroviComponent},
+  {path: 'sednice', component: SedniceComponent},
   {path: 'addZgrada', component:ZgradaDetailComponent},
   {path: 'editZgrada/:id', component:ZgradaDetailComponent},
   {path: 'firme', component: FirmeComponent},
@@ -30,6 +33,8 @@ const routes: Routes = [
   {path: 'editKvar/:id', component:KvarDetailComponent},
   {path: 'addKomentar', component:KomentarDetailComponent},
   {path: 'editKomentar/:id', component:KomentarDetailComponent},
+  {path: 'addSednica', component: SednicaDetailComponent},
+  {path:'editSednica/:id', component: SednicaDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

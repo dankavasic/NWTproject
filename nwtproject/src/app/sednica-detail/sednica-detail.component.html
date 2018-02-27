@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+    <h3>Sednica</h3>
+</div>
+      
+ <div>
+      
+    <form >
+        <div class="form-group">
+            <label for="field1c" class="form-control-label">Id</label>
+            <input type="text" [(ngModel)]="sednica.id" placeholder="Id" 
+                class="form-control" id="field1c" name="field1">
+        </div>
+      
+        <div class="form-group">
+            <div class="input-group">
+                <label for="field1c" class="form-control-label">Datum kreiranja</label>
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" [(ngModel)]="ngbdatKreiranja" 
+                    ngbDatepicker #d1="ngbDatepicker">
+                <button class="input-group-addon" (click)="d1.toggle()" type="button">
+                <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i> 
+                </button>
+            </div>
+        </div>
+        <div class = "form-group">
+            <div class = "input-group">
+            <label for="field1c" class="form-control-label">Datum zakazivanja</label>
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" [(ngModel)]="ngbdatZakazivanja" 
+              ngbDatepicker #d2="ngbDatepicker">
+            <button class="input-group-addon" (click)="d2.toggle()" type="button">
+            <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i> 
+          </button>
+          </div>
+        </div>
+             
+        <div class="form-group">
+            <label for="field3c" class="form-control-label">Aktivna</label>
+            <input type="text" [(ngModel)]="sednica.aktivna" placeholder="Aktivna" 
+                class="form-control" id="field4c" name="field4">
+        </div>
+        <div class="form-group">
+            <label for="field3c" class="form-control-label">Zgrada</label>
+            <input type="text" [(ngModel)]="sednica.zgrada.id" placeholder="zgrada" 
+                class="form-control" id="field5c" name="field5">
+        </div>
+        <div class="form-group">
+                <label for="field3c" class="form-control-label">Kreator</label>
+                <input type="text" [(ngModel)]="sednica.kreator.korisIme" placeholder="kreator" 
+                    class="form-control" id="field6c" name="field6">
+            </div>      
+    </form>
+    <div>
+        <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+        <button class="btn btn-primary" (click)="save()">OK</button>
+      </div> 
+</div>
