@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import { Komentar } from '../model/komentar.model';
+import { Stavka } from '../model/stavka.model';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class KomentarService {
-    private komentariUrl = 'api/komentar';
+export class StavkaService {
+    private stavkeUrl = 'api/stavka';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -21,41 +21,39 @@ export class KomentarService {
         this.RegenerateData.next();
     }
 
-    getKomentari(): Promise<Komentar[]> {
-        return this.http.get('api/komentar/all')
-            .toPromise()
-            .then(response =>
-                response.json() as Komentar[])
-            .catch(this.handleError);
-    }
-
-    getKomentar(id: number): Promise<Komentar> {
-        const url = `${this.komentariUrl}/${id}`;
+    getStavke(): Promise<Stavka[]> {
+        const url = 'api/stavka/all';
         return this.http.get(url)
             .toPromise()
             .then(response =>
-                response.json() as Komentar)
+                response.json() as Stavka[])
             .catch(this.handleError);
     }
-
-    addKomentar(komentar: Komentar): Promise<Komentar> {
-        return this.http
-            .post(this.komentariUrl, JSON.stringify(komentar), { headers: this.headers })
+    getStavka(id: number): Promise<Stavka> {
+        const url = `${this.stavkeUrl}/all/${id}`;
+        return this.http.get(url)
             .toPromise()
-            .then(res => res.json() as Komentar)
+            .then(response =>
+                response.json() as Stavka)
             .catch(this.handleError);
     }
-
-    editKomentar(komentar: Komentar): Promise<Komentar> {
+    addStavka(stavka: Stavka): Promise<Stavka> {
         return this.http
-            .put(this.komentariUrl, JSON.stringify(komentar), { headers: this.headers })
+            .post(this.stavkeUrl, JSON.stringify(stavka), { headers: this.headers })
             .toPromise()
-            .then(res => res.json() as Komentar)
+            .then(res => res.json() as Stavka)
+            .catch(this.handleError);
+    }
+    editStavka(stavka: Stavka): Promise<Stavka> {
+        return this.http
+            .put(this.stavkeUrl, JSON.stringify(stavka), { headers: this.headers })
+            .toPromise()
+            .then(res => res.json() as Stavka)
             .catch(this.handleError);
     }
 
-    deleteKomentar(komentarId: number): Promise<{}> {
-        const url = `${this.komentariUrl}/${this.komentariUrl}`;
+    deleteStavka(stavkaId: number): Promise<{}> {
+        const url = `${this.stavkeUrl}/${stavkaId}`;
         return this.http
             .delete(url)
             .toPromise()           
@@ -63,8 +61,10 @@ export class KomentarService {
     }
 
 
+
+
     handleError(error: any): Promise<any> {
-        console.error("Error... ", error);
+        console.error("Greska...", error);
         return Promise.reject(error.message || error);
     }
 }

@@ -1,45 +1,43 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div>
   <h3>Komentar</h3>
 </div>
 
 <div>
-  <form>
-    <div class="form-group">
-      <label for="field1c" class="form-control-label">Text</label>
-        <input type="text" [(ngModel)]="komentar.text" placeholder="Text" 
-        class="form-control" id="field1c" name="field1">
-</div>
-
-<div>
-  <form>
-    <div class="form-group">
-      <label for="field2c" class="form-control-label">Datum kreiranja</label>
-        <input type="text" [(ngModel)]="komentar.datKreiranja" placeholder="DatKreiranja" 
-        class="form-control" id="field2c" name="field2">
-</div>
-
-<div>
-  <form>
-    <div class="form-group">
-      <label for="field3c" class="form-control-label">Kreator</label>
-        <input type="text" [(ngModel)]="komentar.kreator.ime" placeholder="Kreator" 
-        class="form-control" id="field3c" name="field3">
-</div>
-
-<!--<div>
-  <form>
-    <div class="form-group">
-      <label for="field4c" class="form-control-label">Kvar</label>
-        <input type="text" [(ngModel)]="komentar.kvar.ime" placeholder="Kvar" 
-        class="form-control" id="field4c" name="field4">
-</div> -->
-
-
-
-</form>
+    <form>
+      <div class="form-group">
+        <label for="field1c" class="form-control-label">Id</label>
+          <input type="text" [(ngModel)]="komentar.id" placeholder=id 
+          class="form-control" id="field1c" name="field1">
+      </div>
+      <div class="form-group">
+          <label for="field2c" class="form-control-label">Text</label>
+            <input type="text" [(ngModel)]="komentar.text" placeholder="Text" 
+            class="form-control" id="field2c" name="field2">
+      </div>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="field3c" class="form-control-label">Datum kreiranja</label>
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" [(ngModel)]="ngbDatKreiranja" 
+                ngbDatepicker #d1="ngbDatepicker">
+              <button class="input-group-addon" (click)="d1.toggle()" type="button">
+              <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i> 
+            </button>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="field4c" class="form-control-label">Kreator</label>
+                <input type="text" [(ngModel)]="komentar.kreator.korisIme" placeholder="kreator" 
+                class="form-control" id="field4c" name="field4">
+            </div>
+            <div class="form-group">
+                <label for="field5c" class="form-control-label">Kvar</label>
+                  <input type="text" [(ngModel)]="komentar.kvar.ime" placeholder="kvar" 
+                  class="form-control" id="field5c" name="field5">
+              </div>
  
-
 <div>
+
   <button class="btn btn-primary" (click)="save()">OK</button>
   <button class="btn btn-primary" (click)="goBack()">Cancel</button>
 </div>

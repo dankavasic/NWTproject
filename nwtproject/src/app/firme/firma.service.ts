@@ -31,7 +31,7 @@ export class FirmaService {
     }
 
     getFirma(id: number): Promise<Firma> {
-        const url = `api/firma/all/id`;
+        const url = `${this.firmeUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>

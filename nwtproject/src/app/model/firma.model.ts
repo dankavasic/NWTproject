@@ -1,10 +1,13 @@
+import { Korisnik } from './korisnik.model';
+
 export class Firma implements FirmaInterface{
-    public id: number;
-	public ime: string;
-	public adresa: string;
-	public telefon: number;
-	public webSite: string;
-	public email: string;
+    id: number;
+	ime: string;
+	adresa: string;
+	telefon: number;
+	webSite: string;
+	email: string;
+	vlasnik: Korisnik;
     
     constructor(firmaCfg: FirmaInterface)
 	{	
@@ -14,6 +17,7 @@ export class Firma implements FirmaInterface{
 		this.telefon = firmaCfg.telefon;
 		this.webSite = firmaCfg.webSite;
 		this.email = firmaCfg.email;
+		this.vlasnik = firmaCfg.vlasnik;
 	}
 }
 
@@ -24,4 +28,5 @@ interface FirmaInterface {
 	telefon: number;
 	webSite: string;
 	email: string;
+	vlasnik:Korisnik;
 }

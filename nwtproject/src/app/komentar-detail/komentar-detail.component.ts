@@ -22,8 +22,19 @@ import { KorisnikService } from '../korisnici/korisnik.service';
 export class KomentarDetailComponent implements OnInit {
 
   ngbDatKreiranja: NgbDateStruct;
+  komentar: Komentar;
+
+  mode: string;
+
+  constructor(private komentarService: KomentarService, private kvarService: KvarService,
+    private korisnikService: KorisnikService,
+    private route: ActivatedRoute, private location: Location, private router: Router) {
+    /*komentarService.RegenerateData$.subscribe(() =>
+      this.getEnrollments()
+    );*/
   
-  komentar: Komentar = new Komentar({ // if we add a new course, create an empty course
+  
+  this.komentar= new Komentar({ // if we add a new course, create an empty course
     
     datKreiranja: null,
     text: '',
@@ -35,7 +46,7 @@ export class KomentarDetailComponent implements OnInit {
     }),
 
     kvar: new Kvar({
-      datKreiranja: null,
+    datKreiranja: null,
     datZakazivanja: null,	
     datPopravke: null,
     ime: '',
@@ -63,17 +74,8 @@ export class KomentarDetailComponent implements OnInit {
     
   });
 
-  komentari: Komentar[];
-
-  mode: string = 'ADD';
-
-  constructor(private komentarService: KomentarService, private kvarService: KvarService,
-    private korisnikService: KorisnikService,
-    private route: ActivatedRoute, private location: Location, private router: Router) {
-    /*komentarService.RegenerateData$.subscribe(() =>
-      this.getEnrollments()
-    );*/
-  }
+  this.mode = 'ADD';
+}
 
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
@@ -100,6 +102,8 @@ export class KomentarDetailComponent implements OnInit {
   }
 
   private add(): void {
+    this.komentar.datKreiranja = new Date(this.ngbDatKreiranja.year, this.ngbDatKreiranja.month-1,this.ngbDatKreiranja.day);
+
     this.komentarService.addKomentar(this.komentar)
       .then(komentar => {
         this.komentarService.announceChange();

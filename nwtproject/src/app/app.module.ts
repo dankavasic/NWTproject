@@ -23,6 +23,10 @@ import { KomentarService } from './komentari/komentari.service';
 import {SedniceComponent} from './sednice/sednice.component';
 import { SednicaDetailComponent } from './sednica-detail/sednica-detail.component';
 import {SednicaService} from './sednice/sednica.service';
+import {StavkeComponent} from './stavke/stavke.component';
+import { StavkaDetailComponent } from './stavka-detail/stavka-detail.component';
+import {StavkaService} from './stavke/stavka.service';
+
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { KvaroviComponent } from './kvarovi/kvarovi.component';
@@ -47,12 +51,15 @@ import { ObavestenjeService } from './obavestenja/obavestenja.service';
     KorisnikDetailComponent,
     KvaroviComponent,
     KvarDetailComponent,
+    KomentariComponent,
     KomentarDetailComponent,
     KorisniciComponent,
     SedniceComponent,
     SednicaDetailComponent,
     ObavestenjaComponent,
-    ObavestenjeDetailComponent
+    ObavestenjeDetailComponent,
+    StavkeComponent,
+    StavkaDetailComponent
 
   ],
   imports: [  
@@ -63,7 +70,7 @@ import { ObavestenjeService } from './obavestenja/obavestenja.service';
     routing
   ],
   providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService,
-    ObavestenjeService, KorisnikService,SednicaService],
+    ObavestenjeService, KorisnikService,SednicaService, StavkaService],
   bootstrap: [AppComponent],
 
 })

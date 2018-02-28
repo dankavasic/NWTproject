@@ -31,7 +31,6 @@ export class KomentariComponent implements OnInit {
       this.komentar = komentari);
   }
 
-
   gotoAdd(): void {
     this.router.navigate(['/addKomentar']);
   }

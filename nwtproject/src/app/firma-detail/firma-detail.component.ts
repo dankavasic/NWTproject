@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 
 import { FirmaService } from '../firme/firma.service';
 import { Firma } from '../model/firma.model';
+import { KorisnikService } from '../korisnici/korisnik.service';
+import {Korisnik} from '../model/korisnik.model';
 
 
 import 'rxjs/add/operator/switchMap';
@@ -15,22 +17,33 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./firma-detail.component.css']
 })
 export class FirmaDetailComponent implements OnInit {
-  firma: Firma = new Firma({ // if we add a new course, create an empty course
-    adresa: '',
-    ime: '',
-    telefon: 13567,
-    email: '',
-    webSite: ''
-  });
 
-
-  mode: string = 'ADD';
-
-  constructor(private firmaService: FirmaService,
+  firma: Firma;
+  mode: string;
+  constructor(private firmaService: FirmaService, private korisnikService: KorisnikService,
     private route: ActivatedRoute, private location: Location, private router: Router) {
     
     
-  }
+  
+
+  this.firma = new Firma({ // if we add a new course, create an empty course
+    adresa: '',
+    ime: '',
+    telefon: null,
+    email: '',
+    webSite: '',
+    vlasnik: new Korisnik({
+      ime: '',
+      lozinka: '',
+      korisIme: '',
+      uloga: '',
+    })
+  });
+  this.mode = 'ADD'
+    }
+
+
+ 
 
   ngOnInit() {
     if (this.route.snapshot.params['id']) {
