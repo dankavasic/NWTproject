@@ -19,6 +19,8 @@ import { ObavestenjaComponent } from './obavestenja/obavestenja.component';
 import { ObavestenjeDetailComponent } from './obavestenje-detail/obavestenje-detail.component';
 import { StavkaDetailComponent} from './stavka-detail/stavka-detail.component';
 import { StavkeComponent } from './stavke/stavke.component';
+import { ZapisnikDetailComponent} from './zapisnik-detail/zapisnik-detail.component';
+import { ZapisniciComponent } from './zapisnici/zapisnici.component';
 
 const routes: Routes = [
   {path: 'zgrade', component: ZgradeComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
   {path: 'sednice', component: SedniceComponent},
   {path: 'komentari', component:KomentariComponent},
   {path : 'stavke', component:StavkeComponent},
+  {path : 'zapisnici', component:ZapisniciComponent},
   {path: 'addZgrada', component:ZgradaDetailComponent},
   {path: 'editZgrada/:id', component:ZgradaDetailComponent},
   {path: 'addFirma', component: FirmaDetailComponent },
@@ -47,6 +50,8 @@ const routes: Routes = [
   {path: 'editObavestenje/:id', component: ObavestenjeDetailComponent},
   {path: 'addStavka', component: StavkaDetailComponent},
   {path: 'editStavka/:id', component: StavkaDetailComponent},
+  {path: 'addZapisnik', component: ZapisnikDetailComponent},
+  {path: 'editZapisnik/:id', component: ZapisnikDetailComponent},
   { path: '**', redirectTo: '' }
 ];
 

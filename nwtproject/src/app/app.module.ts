@@ -37,6 +37,9 @@ import { KorisniciComponent } from './korisnici/korisnici.component';
 import { ObavestenjaComponent } from './obavestenja/obavestenja.component';
 import { ObavestenjeDetailComponent } from './obavestenje-detail/obavestenje-detail.component';
 import { ObavestenjeService } from './obavestenja/obavestenja.service';
+import { ZapisniciComponent } from './zapisnici/zapisnici.component';
+import { ZapisnikDetailComponent } from './zapisnik-detail/zapisnik-detail.component';
+import { ZapisnikService } from './zapisnici/zapisnici.service';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { ObavestenjeService } from './obavestenja/obavestenja.service';
     ObavestenjaComponent,
     ObavestenjeDetailComponent,
     StavkeComponent,
-    StavkaDetailComponent
+    StavkaDetailComponent,
+    ZapisniciComponent,
+    ZapisnikDetailComponent
+
 
   ],
   imports: [  
@@ -70,7 +76,7 @@ import { ObavestenjeService } from './obavestenja/obavestenja.service';
     routing
   ],
   providers: [ZgradaService,StanService, FirmaService, KvarService, KomentarService,
-    ObavestenjeService, KorisnikService,SednicaService, StavkaService],
+    ObavestenjeService, KorisnikService,SednicaService, StavkaService,ZapisnikService],
   bootstrap: [AppComponent],
 
 })

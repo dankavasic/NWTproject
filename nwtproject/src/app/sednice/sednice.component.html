@@ -13,15 +13,19 @@
   <table>
     <tr>
       <th>Id</th>
+      <th>Aktivna</th>
       <th>Datum kreiranja</th>
       <th>Datum zakazivanja</th>
-      <th>Aktivna</th>
-      <th>Zgrada</th>
       <th>Kreator</th>
+      <th>Zgrada</th>
+      
     </tr>
     <tr *ngFor="let sednica of sednice">
       <td>
         {{sednica.id}}
+      </td>
+      <td>
+        {{sednica.aktivna}}
       </td>
       <td>
         {{sednica.datKreiranja}}
@@ -30,14 +34,12 @@
         {{sednica.datZakazivanja}}
       </td>
       <td>
-        {{sednica.aktivna}}
+        {{sednica.kreator.korisIme}}
       </td>
       <td>
         {{sednica.zgrada.ime}}
       </td>
-      <td>
-        {{sednica.kreator.korisIme}}
-      </td>
+     
       <td>
         <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(sednica)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>

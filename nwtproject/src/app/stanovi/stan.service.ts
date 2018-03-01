@@ -45,7 +45,7 @@ export class StanService {
             .catch(this.handleError);
     }
     editStan(stan: Stan): Promise<Stan> {
-        const url = `${this.stanoviUrl}/all/${stan.id}`;
+        //const url = `${this.stanoviUrl}/all/${stan.id}`;
         return this.http
             .put(this.stanoviUrl, JSON.stringify(stan), { headers: this.headers })
             .toPromise()

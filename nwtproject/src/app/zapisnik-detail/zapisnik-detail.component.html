@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+  <h3>Zapisnik</h3>
+</div>
+
+<div>
+  <form>
+    <div class="form-group">
+      <label for="field1c" class="form-control-label">Id</label>
+        <input type="text" [(ngModel)]="zapisnik.id" placeholder=id 
+        class="form-control" id="field1c" name="field1">
+    </div>
+  
+    <div class="form-group">
+        <div class="input-group">
+            <label for="field1c" class="form-control-label">Datum kreiranja</label>
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" [(ngModel)]="ngbDatKreiranja" 
+              ngbDatepicker #d1="ngbDatepicker">
+            <button class="input-group-addon" (click)="d1.toggle()" type="button">
+            <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i> 
+            </button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="field1c" class="form-control-label">Opis</label>
+        <input type="text" [(ngModel)]="zapisnik.opis" placeholder="Opis" 
+            class="form-control" id="field3c" name="field3">
+    </div>
+    
+    <div class="form-group">
+        <label for="field1c" class="form-control-label">Kreator</label>
+        <input type="text" [(ngModel)]="zapisnik.kreator.korisIme" placeholder="kreator" 
+            class="form-control" id="field7c" name="field7">
+    </div>
+    <div class="form-group">
+        <label for="field1c" class="form-control-label">Zgrada</label>
+        <input type="text" [(ngModel)]="zapisnik.zgrada.id" placeholder="zgrada" 
+            class="form-control" id="field8c" name="field8">
+    </div>
+    <div class="form-group">
+        <label for="field1c" class="form-control-label">Sednica</label>
+        <input type="text" [(ngModel)]="zapisnik.sednica.id" placeholder="sednica" 
+            class="form-control" id="field8c" name="field8">
+    </div>
+<div>
+  <button class="btn btn-primary" (click)="save()">OK</button>
+  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+</div>

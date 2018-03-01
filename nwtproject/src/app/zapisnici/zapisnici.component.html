@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-   <h3>Stanovi</h3>
+   <h3>Zapisnici</h3>
 </div>
 <head>
   <style>
@@ -13,37 +13,28 @@
   <table>
     <tr>
       <th>Id</th>
-      <th>Adresa</th>
-      <th>Broj stanovnika</th>
-      <th>Ime</th>
-      <th>Vlasnik</th>
+      <th>Datum kreiranja</th>
+      <th>Opis</th>
+      <th>Kreator</th>
       <th>Zgrada</th>
+      <th>Sednica</th>
+      
     </tr>
-    <tr *ngFor="let stan of stanovi">
+    <tr *ngFor="let zapisnik of zapisnik">
+      <td>{{zapisnik.id}}</td>
+      <td>{{zapisnik.DatKreiranja}}</td>
+      <td>{{zapisnik.opis}}</td>
+      <td>{{zapisnik.kreator.korisIme}}</td>
+      <td>{{zapisnik.zgrada.id}}</td>
+      <td>{{zapisnik.sednica.id}}</td>      
+
+      
       <td>
-        {{stan.id}}
-      </td>
-      <td>
-        {{stan.adresa}}
-      </td>
-      <td>
-        {{stan.brStanovnika}}
-      </td>
-      <td>
-        {{stan.ime}}
-      </td>
-      <td>
-        {{stan.vlasnik.korisIme}}
-      </td>
-      <td>
-        {{stan.zgrada.ime}}
-      </td>
-      <td>
-        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(stan)">
+        <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(zapisnik)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
         </button>
   
-        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteStan(stan.id)">
+        <button type="button" class="btn btn-primary" aria-label="Delete" (click)="deleteZapisnik(zapisnik.id)">
           <i class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></i>
         </button>
       </td>
@@ -53,5 +44,4 @@
     <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAdd()">
       <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
     </button>
-  </div> 
-  
+  </div>
