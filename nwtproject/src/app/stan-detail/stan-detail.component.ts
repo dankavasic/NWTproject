@@ -23,9 +23,16 @@ export class StanDetailComponent implements OnInit {
   constructor(private stanService: StanService,private zgradaService: ZgradaService,
      private route: ActivatedRoute, private location: Location) {
       this.stan = new Stan({ // if we add a new student, create an empty student 
-        ime: '',
         adresa: '',
-        zgrada : new Zgrada({
+        brStanovnika: '',
+        ime: '',
+        vlasnik: new Korisnik({
+          ime: '',
+          lozinka: '',
+          korisIme: '',
+          uloga: '',
+        }),
+      zgrada : new Zgrada({
           ime: '',
           adresa: '',
           brStanova: null,
@@ -36,15 +43,9 @@ export class StanDetailComponent implements OnInit {
             korisIme: '',
             uloga: '',
           })
-        }),
-        brStanovnika: '',
-        vlasnik: new Korisnik({
-          ime: '',
-          lozinka: '',
-          korisIme: '',
-          uloga: '',
         })
-      });
+      })
+        
     this.mode = 'ADD';
   }
 
@@ -63,7 +64,8 @@ export class StanDetailComponent implements OnInit {
           this.zgradaService.getZgrada(params['zgradaId'])
             .then(zgrada => 
               this.stan.zgrada = zgrada 
-            ))
+            ));
+        
     } 
   }
 

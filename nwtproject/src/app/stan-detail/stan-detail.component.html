@@ -1,43 +1,43 @@
 <div>
-    <h3>Stan</h3>
-  </div>
-  <div>
-  
-    <form >
-      <div class="form-group">
-        <label for="field1c" class="form-control-label">Id</label>
-        <input type="text" [(ngModel)]="stan.id" placeholder="id" 
-          class="form-control" id="field1c" name="field1">
-      </div>
-      <div class="form-group">
-        <label for="field1c" class="form-control-label">Ime</label>
-        <input type="text" [(ngModel)]="stan.ime" placeholder="upisite ime" 
-          class="form-control" id="field2c" name="field2">
-      </div>
-  
-      <div class="form-group">
-        <label for="field2c" class="form-control-label">Adresa</label>
-        <input type="text" [(ngModel)]="stan.adresa" placeholder="upisite adresu" 
-          class="form-control" id="field3c" name="field3">
-      </div>
-         
-      <div class="form-group">
-        <label for="field3c" class="form-control-label">Broj stanovnika</label>
-        <input type="text" [(ngModel)]="stan.brStanovnika" placeholder="stanovnici" 
-          class="form-control" id="field4c" name="field4">
-      </div>
-      <div class="form-group">
-        <label for="field4c" class="form-control-label">Vlasnik</label>
-        <input type="text" [(ngModel)]="stan.vlasnik.korisIme" placeholder="Vlasnik" 
-          class="form-control" id="field5c" name="field5">
-      </div>
-      <div class="form-group">
-        <label for="field5c" class="form-control-label">Zgrada</label>
-        <input type="text" [(ngModel)]="stan.zgrada.id" placeholder="zgrada" 
-          class="form-control" id="field6c" name="field6">
-      </div>
-     </form>
-  <div>
-    <button class="btn btn-primary" (click)="goBack()">Cancel</button>
-    <button class="btn btn-primary" (click)="save()">OK</button>
-  </div> 
+  <h3>Stan</h3>
+</div>
+<div>
+
+  <form >
+    <div class="form-group">
+      <label for="field1c" class="form-control-label">Id</label>
+      <input type="text" [(ngModel)]="stan.id" placeholder="id" 
+        class="form-control" id="field1c" name="field1">
+    </div>
+    <div class="form-group">
+      <label for="field1c" class="form-control-label">Ime</label>
+      <input type="text" [(ngModel)]="stan.ime" placeholder="upisite ime" 
+        class="form-control" id="field2c" name="field2">
+    </div>
+
+    <div class="form-group">
+      <label for="field2c" class="form-control-label">Adresa</label>
+      <input type="text" [(ngModel)]="stan.adresa" placeholder="upisite adresu" 
+        class="form-control" id="field3c" name="field3">
+    </div>
+       
+    <div class="form-group">
+      <label for="field3c" class="form-control-label">Broj stanovnika</label>
+      <input type="text" [(ngModel)]="stan.brStanovnika" placeholder="stanovnici" 
+        class="form-control" id="field4c" name="field4">
+    </div>
+    <div class="form-group">
+      <label for="field4c" class="form-control-label">Vlasnik</label>
+      <input type="text" [(ngModel)]="stan.vlasnik.korisIme" placeholder="Vlasnik" 
+        class="form-control" id="field5c" name="field5">
+    </div>
+    <div class="form-group">
+      <label for="field5c" class="form-control-label">Zgrada</label>
+      <input type="text" [(ngModel)]="stan.zgrada.id" placeholder="zgrada" 
+        class="form-control" id="field6c" name="field6">
+    </div>
+   </form>
+<div>
+  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+  <button class="btn btn-primary" (click)="save()">OK</button>
+</div> 

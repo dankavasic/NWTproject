@@ -105,8 +105,6 @@ export class KvarDetailComponent implements OnInit {
 
   private add(): void {
     this.kvar.datKreiranja = new Date(this.ngbDatKreiranja.year, this.ngbDatKreiranja.month-1,this.ngbDatKreiranja.day);
-    this.kvar.datZakazivanja = new Date(this.ngbDatZakazivanja.year, this.ngbDatZakazivanja.month-1, this.ngbDatPopravke.day);
-    this.kvar.datPopravke = new Date(this.ngbDatPopravke.year, this.ngbDatPopravke.month-1,this.ngbDatPopravke.day);
     
     this.kvarService.addKvar(this.kvar)
       .then(kvar => {
@@ -116,6 +114,9 @@ export class KvarDetailComponent implements OnInit {
   }
 
   private edit(): void {
+    this.kvar.datZakazivanja = new Date(this.ngbDatZakazivanja.year, this.ngbDatZakazivanja.month-1, this.ngbDatPopravke.day);
+    this.kvar.datPopravke = new Date(this.ngbDatPopravke.year, this.ngbDatPopravke.month-1,this.ngbDatPopravke.day);
+    
     this.kvarService.editKvar(this.kvar)
       .then(kvar => {
         this.kvarService.announceChange();

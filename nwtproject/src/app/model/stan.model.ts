@@ -3,9 +3,9 @@ import { Zgrada } from "./zgrada.model";
 
 export class Stan implements StanInterface{
     public id: number;
-	public ime: string;
 	public adresa : string;
 	public brStanovnika : string;
+	public ime: string;
 	public vlasnik : Korisnik;
 	public zgrada : Zgrada;
 	
@@ -13,9 +13,9 @@ export class Stan implements StanInterface{
     constructor(stanCfg: StanInterface)
 	{	
 		this.id = stanCfg.id;
-		this.ime = stanCfg.ime;
 		this.adresa = stanCfg.adresa;
 		this.brStanovnika = stanCfg.brStanovnika;
+		this.ime = stanCfg.ime;
 		this.vlasnik = stanCfg.vlasnik;
 		this.zgrada = stanCfg.zgrada;
 
@@ -24,9 +24,9 @@ export class Stan implements StanInterface{
 
 interface StanInterface {
 	id?: number;
-	ime: string;
 	adresa : string;
 	brStanovnika: string,
+	ime: string;
 	vlasnik: Korisnik;
 	zgrada: Zgrada;
 }
