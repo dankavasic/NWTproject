@@ -64,7 +64,7 @@
       
     
 </form>
-  <div *ngIf="kvar.id">
+<div *ngIf="kvar.id">
     <div>
       <h3>Komentari</h3>
       <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKomentar()">
@@ -85,6 +85,7 @@
     </table>   
   </div>
 </div>
+ 
 <div>
   <button class="btn btn-primary" (click)="save()">OK</button>
   <button class="btn btn-primary" (click)="goBack()">Cancel</button>

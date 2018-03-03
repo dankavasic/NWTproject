@@ -129,7 +129,7 @@ export class ZgradaDetailComponent implements OnInit {
   gotoAddKvar(): void {
     this.router.navigate(['/addKvar'], { queryParams: { zgradaId: this.zgrada.id } });
   }
-  gotoEditkvar(kvar: Kvar): void {
+  gotoEditKvar(kvar: Kvar): void {
     this.router.navigate(['/editKvar', kvar.id],{ queryParams: { zgradaId: this.zgrada.id } });
   }
   deleteKvar(kvarId: number): void {

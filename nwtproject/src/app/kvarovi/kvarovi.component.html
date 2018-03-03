@@ -21,13 +21,13 @@
       <th>Kreator</th>
       
     </tr>
-    <tr *ngFor="let kvar of kvar">
+    <tr *ngFor="let kvar of kvarovi">
       <td>{{kvar.id}}</td>
       <td>{{kvar.ime}}</td>
       <td>{{kvar.opis}}</td>
-      <td>{{kvar.DatKreiranja}}</td>
-      <td>{{kvar.DatZakazivanja}}</td>
-      <td>{{kvar.DatPopravke}}</td>
+      <td>{{kvar.datKreiranja  | date: 'dd.MM.yyyy'}}</td>
+      <td>{{kvar.datZakazivanja  | date: 'dd.MM.yyyy'}}</td>
+      <td>{{kvar.datPopravke  | date: 'dd.MM.yyyy'}}</td>
       <td>{{kvar.kreator.korisIme}}</td>
       
       <td>

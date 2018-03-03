@@ -114,7 +114,7 @@ export class KvarDetailComponent implements OnInit {
   }
 
   private edit(): void {
-    this.kvar.datZakazivanja = new Date(this.ngbDatZakazivanja.year, this.ngbDatZakazivanja.month-1, this.ngbDatPopravke.day);
+    this.kvar.datZakazivanja = new Date(this.ngbDatZakazivanja.year, this.ngbDatZakazivanja.month-1, this.ngbDatZakazivanja.day);
     this.kvar.datPopravke = new Date(this.ngbDatPopravke.year, this.ngbDatPopravke.month-1,this.ngbDatPopravke.day);
     
     this.kvarService.editKvar(this.kvar)
@@ -135,7 +135,7 @@ export class KvarDetailComponent implements OnInit {
   deleteKomentar(komentarId: number): void {
     this.komentarService.deleteKomentar(komentarId).then(
       () => this.getKomentari()
-    );
-  }
+    )
+   }
 
 }

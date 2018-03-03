@@ -40,7 +40,7 @@ export class SednicaDetailComponent implements OnInit {
     )
 
       this.sednica = new Sednica({ // if we add a new student, create an empty student 
-        aktivna: false,
+        aktivna: null,
         datKreiranja: null,
         datZakazivanja: null,
         kreator: new Korisnik({

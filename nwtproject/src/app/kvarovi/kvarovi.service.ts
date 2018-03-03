@@ -71,7 +71,6 @@ export class KvarService {
                 response.json() as Komentar[])
             .catch(this.handleError);
     }
-
     handleError(error: any): Promise<any> {
         console.error("Error... ", error);
         return Promise.reject(error.message || error);

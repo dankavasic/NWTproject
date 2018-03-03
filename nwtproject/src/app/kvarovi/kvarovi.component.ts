@@ -13,7 +13,7 @@ import { KomentarService } from '../komentari/komentari.service';
 })
 export class KvaroviComponent implements OnInit {
 
-  kvar: Kvar[];
+  kvarovi: Kvar[];
 
   subscription: Subscription;
 
@@ -29,14 +29,8 @@ export class KvaroviComponent implements OnInit {
 
   getKvarovi() {
     this.kvarService.getKvarovi().then(kvarovi =>
-      this.kvar = kvarovi);
+      this.kvarovi = kvarovi);
   }
-
-  /*getKvar(id: number): void {
-    this.kvarService.getKvar(id).then(
-      this.komentarService.getKomentar()
-    )
-  }*/
 
   gotoAdd(): void {
     this.router.navigate(['/addKvar']);
