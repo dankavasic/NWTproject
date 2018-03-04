@@ -15,6 +15,8 @@ import { Korisnik } from '../model/korisnik.model';
 import { ZgradaService } from '../zgrade/zgrade.service';
 import { Zapisnik } from '../model/zapisnik.model';
 import { ZapisnikService } from '../zapisnici/zapisnici.service';
+import { Stavka } from '../model/stavka.model';
+import {StavkaService } from '../stavke/stavke.service';
 
 
 @Component({
@@ -28,12 +30,13 @@ export class SednicaDetailComponent implements OnInit {
 
  sednica: Sednica;
  zapisnici: Zapisnik[];
+ stavke: Stavka[];
 
 
   mode: string='ADD';    
 
   constructor(private zgradaService: ZgradaService, private sednicaService: SednicaService,
-    private zapisnikService : ZapisnikService,
+    private zapisnikService : ZapisnikService, private stavkaService : StavkaService,
     private route: ActivatedRoute, private location: Location, private router: Router) {
     zapisnikService.RegenerateData$.subscribe(()=>
       this.getZapisnici()
@@ -74,6 +77,7 @@ export class SednicaDetailComponent implements OnInit {
         .subscribe(sednica => {
           this.sednica = sednica;
           this.getZapisnici();
+          this.getStavke();
           }
         );
 
@@ -89,6 +93,11 @@ export class SednicaDetailComponent implements OnInit {
     this.sednicaService.getSednicaZapisnik(this.sednica.id).then(zapisnici =>
       this.zapisnici = zapisnici);
   }
+  
+ private getStavke(): void {
+  this.sednicaService.getSednicaStavka(this.sednica.id).then(stavke =>
+    this.stavke = stavke);
+}
 
   save(): void {
     this.mode == 'ADD' ? this.add() : this.edit();    
@@ -124,6 +133,19 @@ export class SednicaDetailComponent implements OnInit {
   deleteZapisnik(zapisnikId: number): void {
     this.zapisnikService.deleteZapisnik(zapisnikId).then(
       () => this.getZapisnici()
+    );
+  }
+
+  gotoAddStavka(): void {
+    this.router.navigate(['/addStavka'], { queryParams: { sednicaId: this.sednica.id } });
+  }
+
+  gotoEditstavka(stavka: Stavka): void {
+    this.router.navigate(['/editStavka', stavka.id],{ queryParams: { sednicaId: this.sednica.id } });
+  }
+  deleteStavka(stavkaId: number): void {
+    this.stavkaService.deleteStavka(stavkaId).then(
+      () => this.getStavke()
     );
   }
 

@@ -6,7 +6,7 @@ import { Sednica } from '../model/sednica.model';
 
 import 'rxjs/add/operator/toPromise';
 import { Zapisnik } from '../model/zapisnik.model';
-
+import { Stavka } from '../model/stavka.model';
 @Injectable()
 export class SednicaService {
     private sedniceUrl = 'api/sednica';
@@ -71,6 +71,15 @@ export class SednicaService {
                 response.json() as Zapisnik[])
             .catch(this.handleError);
     }
+    getSednicaStavka(sednicaId: number): Promise<Stavka[]> {
+        const url = `${this.sedniceUrl}/${sednicaId}/stavka`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response =>
+                response.json() as Stavka[])
+            .catch(this.handleError);
+    }
+
 
 
     handleError(error: any): Promise<any> {
