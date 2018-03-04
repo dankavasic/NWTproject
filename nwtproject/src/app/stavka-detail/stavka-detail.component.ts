@@ -2,12 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params,Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { StavkaService } from '../stavke/stavka.service';
+import { StavkaService } from '../stavke/stavke.service';
 import { Stavka } from '../model/stavka.model';
 
 import 'rxjs/add/operator/switchMap';
 import { Korisnik } from '../model/korisnik.model';
+import { KorisnikService } from '../korisnici/korisnik.service';
 import { Sednica } from '../model/sednica.model';
+import { SednicaService } from '../sednice/sednica.service';
 import { Zgrada } from '../model/zgrada.model';
 
 @Component({
@@ -52,9 +54,11 @@ export class StavkaDetailComponent implements OnInit {
     
   });
 
-  mode: string='ADD';    
+  stavke: Stavka[];
+  mode: string = 'ADD';    
 
-  constructor(private stavkaService: StavkaService, 
+  constructor(private stavkaService: StavkaService, private korisnikService: KorisnikService,
+    private sednicaService: SednicaService,
     private route: ActivatedRoute, private location: Location) {
     
   }
@@ -68,8 +72,13 @@ export class StavkaDetailComponent implements OnInit {
           this.stavkaService.getStavka(+params['id'])) // convert to number
         .subscribe(stavka => {
           this.stavka = stavka;
-          }
-        );
+          });
+
+          this.route.queryParams.subscribe(params =>
+            this.sednicaService.getSednica(params['sednicaId'])
+              .then(sednica => 
+                this.stavka.sednica = sednica
+              ));
     } 
   }
 

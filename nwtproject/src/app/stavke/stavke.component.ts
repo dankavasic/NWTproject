@@ -3,21 +3,22 @@ import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 
 import { Stavka } from '../model/stavka.model';
-import { StavkaService } from './stavka.service';
+import { StavkaService } from './stavke.service';
+import { SednicaService } from '../sednice/sednica.service';
 
 @Component({
-    selector: 'stavka-list',
+    selector: 'stavke-list',
     templateUrl: './stavke.component.html',
     styleUrls: ['./stavke.component.css']
   })
 
   export class StavkeComponent implements OnInit {
 
-    stavke: Stavka[];
+    stavka: Stavka[];
   
     subscription: Subscription;
   
-    constructor(private stavkaService: StavkaService, private router: Router) {
+    constructor(private stavkaService: StavkaService,private sednicaService: SednicaService, private router: Router) {
       this.subscription = stavkaService.RegenerateData$.subscribe(() =>
         this.getStavke()
       );
@@ -29,7 +30,7 @@ import { StavkaService } from './stavka.service';
   
     getStavke() {
       this.stavkaService.getStavke().then(stavke =>
-        this.stavke = stavke);
+        this.stavka = stavke);
     }
   
     gotoAdd(): void {
@@ -40,8 +41,8 @@ import { StavkaService } from './stavka.service';
       this.router.navigate(['/editStavka', stavka.id]);
     }
   
-    deleteStavka(stavkaId: number): void {
-      this.stavkaService.deleteStavka(stavkaId).then(
+    deleteStavka(stavkeId: number): void {
+      this.stavkaService.deleteStavka(stavkeId).then(
         () => this.getStavke()
       );
     }

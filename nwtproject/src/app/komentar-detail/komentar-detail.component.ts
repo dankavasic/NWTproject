@@ -13,6 +13,7 @@ import 'rxjs/add/operator/switchMap';
 import { NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { KvarService } from '../kvarovi/kvarovi.service';
 import { KorisnikService } from '../korisnici/korisnik.service';
+import {ZgradaService} from '../zgrade/zgrade.service';
 
 @Component({
   selector: 'app-komentar-detail',
@@ -27,7 +28,7 @@ export class KomentarDetailComponent implements OnInit {
   mode: string;
 
   constructor(private komentarService: KomentarService, private kvarService: KvarService,
-    private korisnikService: KorisnikService,
+    private korisnikService: KorisnikService, private zgradaService: ZgradaService,
     private route: ActivatedRoute, private location: Location, private router: Router) {
     /*komentarService.RegenerateData$.subscribe(() =>
       this.getEnrollments()
@@ -87,6 +88,11 @@ export class KomentarDetailComponent implements OnInit {
         .subscribe(komentar => {
           this.komentar = komentar;
         });
+        this.route.queryParams.subscribe(params =>
+          this.korisnikService.getKorisnik(params['kreatorId'])
+            .then(kreator => 
+              this.komentar.kreator = kreator 
+            ));
         this.route.queryParams.subscribe(params =>
           this.kvarService.getKvar(params['kvarId'])
             .then(kvar => 

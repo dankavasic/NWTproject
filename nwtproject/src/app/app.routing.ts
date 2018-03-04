@@ -8,6 +8,7 @@ import { FirmeComponent } from './firme/firme.component';
 import { ZgradaDetailComponent } from './zgrada-detail/zgrada-detail.component';
 import { FirmaDetailComponent } from './firma-detail/firma-detail.component';
 import { StanDetailComponent } from './stan-detail/stan-detail.component';
+import { KorisniciComponent } from './korisnici/korisnici.component';
 import { KorisnikDetailComponent } from './korisnik-detail/korisnik-detail.component';
 import { KvarDetailComponent } from './kvar-detail/kvar-detail.component';
 import { KomentarDetailComponent } from './komentar-detail/komentar-detail.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'komentari', component:KomentariComponent},
   {path : 'stavke', component:StavkeComponent},
   {path : 'zapisnici', component:ZapisniciComponent},
+  {path: 'korisnici', component:KorisniciComponent},
   {path: 'addZgrada', component:ZgradaDetailComponent},
   {path: 'editZgrada/:id', component:ZgradaDetailComponent},
   {path: 'addFirma', component: FirmaDetailComponent },

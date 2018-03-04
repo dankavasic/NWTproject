@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
 import { Komentar } from '../model/komentar.model';
-
+import { Kvar } from '../model/kvar.model';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -55,7 +55,7 @@ export class KomentarService {
     }
 
     deleteKomentar(komentarId: number): Promise<{}> {
-        const url = `${this.komentariUrl}/${this.komentariUrl}`;
+        const url = `${this.komentariUrl}/${komentarId}`;
         return this.http
             .delete(url)
             .toPromise()           

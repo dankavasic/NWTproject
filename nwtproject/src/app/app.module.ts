@@ -25,7 +25,7 @@ import { SednicaDetailComponent } from './sednica-detail/sednica-detail.componen
 import {SednicaService} from './sednice/sednica.service';
 import {StavkeComponent} from './stavke/stavke.component';
 import { StavkaDetailComponent } from './stavka-detail/stavka-detail.component';
-import {StavkaService} from './stavke/stavka.service';
+import {StavkaService} from './stavke/stavke.service';
 
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';

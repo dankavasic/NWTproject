@@ -21,9 +21,9 @@
     <tr *ngFor="let komentar of komentari">
       <td>{{komentar.id}}</td>
       <td>{{komentar.text}}</td>
-      <td>{{komentar.datKreiranja}}</td>
+      <td>{{komentar.datKreiranja  | date: 'dd.MM.yyyy'}}</td>
       <td>{{komentar.kreator.korisIme}}</td>
-      <td>{{komentar.kvar.ime}}</td>
+      <td>{{komentar.kvar.id}}</td>
       <td>
         <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEdit(komentar)">
           <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>

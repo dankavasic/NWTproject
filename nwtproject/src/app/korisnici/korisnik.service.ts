@@ -3,13 +3,13 @@ import { Headers, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
 import { Korisnik } from '../model/korisnik.model';
-//import { Enrollment } from '../model/enrollment.model';
+
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class KorisnikService {
-    private korisniciUrl = 'api/korisnici';
+    private korisniciUrl = 'api/korisnik_servisa';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -23,7 +23,8 @@ export class KorisnikService {
     }
 
     getKorisnici(): Promise<Korisnik[]> {
-        return this.http.get(this.korisniciUrl)
+        const url = 'api/korisnik_servisa/all';
+        return this.http.get(url)
             .toPromise()
             .then(response =>
                 response.json() as Korisnik[])

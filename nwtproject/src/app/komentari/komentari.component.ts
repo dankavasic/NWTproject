@@ -12,7 +12,7 @@ import { KomentarService } from './komentari.service';
 })
 export class KomentariComponent implements OnInit {
 
-  komentar: Komentar[];
+  komentari: Komentar[];
 
   subscription: Subscription;
 
@@ -28,7 +28,7 @@ export class KomentariComponent implements OnInit {
 
   getKomentari() {
     this.komentarService.getKomentari().then(komentari =>
-      this.komentar = komentari);
+      this.komentari = komentari);
   }
 
   gotoAdd(): void {

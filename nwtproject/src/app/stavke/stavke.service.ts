@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { Stavka } from '../model/stavka.model';
 
 import 'rxjs/add/operator/toPromise';
+import { Sednica } from '../model/sednica.model';
 
 @Injectable()
 export class StavkaService {
@@ -22,15 +23,15 @@ export class StavkaService {
     }
 
     getStavke(): Promise<Stavka[]> {
-        const url = 'api/stavka/all';
-        return this.http.get(url)
+        return this.http.get("api/stavka/all")
             .toPromise()
             .then(response =>
                 response.json() as Stavka[])
             .catch(this.handleError);
     }
+    
     getStavka(id: number): Promise<Stavka> {
-        const url = `${this.stavkeUrl}/all/${id}`;
+        const url = `${this.stavkeUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
             .then(response =>
@@ -51,6 +52,16 @@ export class StavkaService {
             .then(res => res.json() as Stavka)
             .catch(this.handleError);
     }
+
+    getStavkaSednica(stavkaId: number): Promise<Sednica[]> {
+        const url = `${this.stavkeUrl}/${stavkaId}/sednica`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response =>
+                response.json() as Sednica[])
+            .catch(this.handleError);
+    }
+
 
     deleteStavka(stavkaId: number): Promise<{}> {
         const url = `${this.stavkeUrl}/${stavkaId}`;
