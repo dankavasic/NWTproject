@@ -7,6 +7,7 @@
   <style>
   table, th, td {
     border-right: 2px solid rgb(208, 236, 197);
+    border-bottom: 2px solid rgb(208, 236, 197);
   }
   </style>
 </head>
@@ -38,11 +39,17 @@
       <input type="text" [(ngModel)]="zgrada.brNaseljenih" placeholder="broj naseljenih" 
         class="form-control" id="field5c" name="field5">
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="field6c" class="form-control-label">Vlasnik</label>
       <input type="text" [(ngModel)]="zgrada.vlasnik.korisIme" placeholder="vlasnik" 
         class="form-control" id="field6c" name="field6">
-    </div>
+    </div>-->
+    <div class="form-group">
+        <label for="vlasnik" class="form-control-label">Vlasnik</label>
+        <select id="vlasnik" name="vlasnik" class="form-control" [(ngModel)]="zgrada.vlasnik.korisIme">
+              <option *ngFor="let s of korisnici" [ngValue]="s.korisIme">{{s.korisIme}}</option>
+            </select>
+      </div>
   </form>
   <div *ngIf="zgrada.id">
     <div>
@@ -55,6 +62,7 @@
       <tr>
         <th>Broj kvara</th>
         <th>Ime</th>
+        <th>Opis</th>
         <th>Datum kreiranja</th>
         <th>Datum zakazivanja</th>
         <th>Datum popravke</th>
@@ -92,7 +100,7 @@
       <tr>
         <th>Broj stana</th>
         <th>Ime</th>
-        <th>Adresa</th>
+        <th>Broj stana</th>
         <th>Broj stanovnika</th>
         <th>Vlasnik</th>
       </tr>

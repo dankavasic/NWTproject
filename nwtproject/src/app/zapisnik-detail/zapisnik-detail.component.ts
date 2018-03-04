@@ -109,6 +109,8 @@ export class ZapisnikDetailComponent implements OnInit {
   }
 
   private add(): void {
+    this.zapisnik.datKreiranja = new Date(this.ngbDatKreiranja.year, this.ngbDatKreiranja.month-1,this.ngbDatKreiranja.day);
+    
     this.zapisnikService.addZapisnik(this.zapisnik)
       .then(zapisnik => {
         this.zapisnikService.announceChange();

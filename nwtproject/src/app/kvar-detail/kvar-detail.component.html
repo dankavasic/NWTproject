@@ -3,7 +3,14 @@
 <div>
   <h3>Kvar</h3>
 </div>
-
+<head>
+    <style>
+    table, th, td {
+      border-right: 2px solid rgb(208, 236, 197);
+      border-bottom: 2px solid rgb(208, 236, 197);
+    }
+    </style>
+  </head>
 <div>
   <form>
     <div class="form-group">
@@ -68,25 +75,37 @@
     <div>
       <h3>Komentari</h3>
       <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKomentar()">
-        <span class="fa fa-plus" aria-hidden="true"></span>
+          <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered">
+      <tr>
+          <th>Id</th>
+          <th>Text</th>
+          <th>Datum kreiranja</th>
+          <th>Kreator</th>
+      </tr>      
       <tr *ngFor="let komentar of komentari">
-        <td>
-        {{komentar.id}} {{komentar.ime}} {{komentar.opis}} {{komentar.kreator.ime}} {{komentar.datKreiranja}}
-        </td>
-        <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKomentar(komentar.id)">
-            <span class="fa fa-remove" aria-hidden="true"></span>
-          </button>
-        </td>
+          <td>{{komentar.id}}</td>
+          <td>{{komentar.text}}</td>
+          <td>{{komentar.datKreiranja  | date: 'dd.MM.yyyy'}}</td>
+          <td>{{komentar.kreator.korisIme}}</td>
+          <td>
+              <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditKomentar(komentar)">
+                <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+              </button>  
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKomentar(komentar.id)">
+                <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
+              </button>
+            </td>
       </tr>
     </table>   
   </div>
 </div>
  
 <div>
-  <button class="btn btn-primary" (click)="save()">OK</button>
-  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+  <button class="btn btn-primary" (click)="save()" style="font-size:18px;color:darkgreen">OK</button>
+  <button class="btn btn-primary" (click)="goBack()" style="font-size:18px;color:darkgreen">Cancel</button>
 </div>

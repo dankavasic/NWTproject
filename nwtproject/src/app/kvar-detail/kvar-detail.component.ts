@@ -132,6 +132,10 @@ export class KvarDetailComponent implements OnInit {
     this.router.navigate(['/addKomentar'], { queryParams: { kvarId: this.kvar.id } });
   }
 
+  gotoEditKomentar(komentar: Komentar): void {
+    this.router.navigate(['/editKomentar', komentar.id], { queryParams: { kvarId: this.kvar.id } });
+  }
+
   deleteKomentar(komentarId: number): void {
     this.komentarService.deleteKomentar(komentarId).then(
       () => this.getKomentari()

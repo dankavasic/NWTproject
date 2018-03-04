@@ -31,6 +31,7 @@ export class ZgradaDetailComponent implements OnInit {
   stanovi: Stan[];
   obavestenja: Obavestenje[];
   sednice: Sednica[];
+  korisnici: Korisnik[];
 
   mode: string;
 
@@ -78,8 +79,9 @@ export class ZgradaDetailComponent implements OnInit {
           this.getStanovi();
           this.getObavestenja();
           this.getSednice();
-
         });
+        this.korisnikService.getKorisnici().then(korisnici =>
+          this.korisnici = korisnici);
     }
   }
 
