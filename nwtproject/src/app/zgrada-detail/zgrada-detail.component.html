@@ -39,17 +39,20 @@
       <input type="text" [(ngModel)]="zgrada.brNaseljenih" placeholder="broj naseljenih" 
         class="form-control" id="field5c" name="field5">
     </div>
-    <!--<div class="form-group">
+    <div class="form-group">
       <label for="field6c" class="form-control-label">Vlasnik</label>
       <input type="text" [(ngModel)]="zgrada.vlasnik.korisIme" placeholder="vlasnik" 
         class="form-control" id="field6c" name="field6">
-    </div>-->
-    <div class="form-group">
+        <select id="vlasnik" name="vlasnik" class="form-control" [(ngModel)]="zgrada.vlasnik.korisIme">
+          <option *ngFor="let s of korisnici" [ngValue]="s.korisIme">{{s.korisIme}}</option>
+        </select>
+    </div>
+    <!--<div class="form-group">
         <label for="vlasnik" class="form-control-label">Vlasnik</label>
         <select id="vlasnik" name="vlasnik" class="form-control" [(ngModel)]="zgrada.vlasnik.korisIme">
               <option *ngFor="let s of korisnici" [ngValue]="s.korisIme">{{s.korisIme}}</option>
             </select>
-      </div>
+      </div>-->
   </form>
   <div *ngIf="zgrada.id">
     <div>
@@ -60,7 +63,7 @@
     </div>
     <table class="table table-bordered">
       <tr>
-        <th>Broj kvara</th>
+        <th>Id kvara</th>
         <th>Ime</th>
         <th>Opis</th>
         <th>Datum kreiranja</th>
@@ -98,7 +101,7 @@
     </div>
     <table class="table table-bordered">
       <tr>
-        <th>Broj stana</th>
+        <th>Id stana</th>
         <th>Ime</th>
         <th>Broj stana</th>
         <th>Broj stanovnika</th>
@@ -132,7 +135,7 @@
     </div>
     <table class="table table-bordered">
       <tr>
-        <th>Broj obavestenja</th>
+        <th>Id obavestenja</th>
         <th>Ime</th>
         <th>Opis</th>
         <th>Datum kreiranja</th>
@@ -166,7 +169,7 @@
     </div>
     <table class="table table-bordered">
       <tr>
-        <th>Broj sednice</th>
+        <th>Id sednice</th>
         <th>Aktivna</th>
         <th>Datum kreiranja</th>
         <th>Datum zakazivanja</th>
