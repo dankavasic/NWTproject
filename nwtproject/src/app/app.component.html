@@ -1,20 +1,48 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div style="text-align:center" >
-  <h1>
+  <h1 style="text-align:center; font-family:verdana;">
     Sistem za odrzavanje zgrada!
   </h1>
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <style>
+    .button {
+        background-color: rgba(9, 189, 221, 0.144); /* Green */
+        border-radius: 8px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    
+    .button2 {background-color: rgba(36, 127, 143, 0.144);}
+    .button3 {background-color: rgba(36, 127, 143, 0.144);} 
+    .button4 {background-color: rgba(36, 127, 143, 0.144);}
+    .button5 {background-color: rgba(36, 127, 143, 0.144);} 
+    </style>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li routerLinkActive="active current">
-          <a class="nav-link" [routerLink]="['/zgrade']">Zgrade</a>
-          <a class="nav-link" [routerLink]="['/firme']">Firme</a>
-          <a class="nav-link" [routerLink]="['/sednice']">Sednice</a>
-
+          <button class="button"><a class="nav-link" [routerLink]="['/zgrade']">
+            Zgrade 
+          </a></button>
+          <button class="button button"><a class="nav-link" [routerLink]="['/firme']">Firme</a>
+            </button>
+          <button class="button button"><a class="nav-link" [routerLink]="['/sednice']">Sednice</a>
+            </button>
+            <button class="button button">
           <a class="nav-link" [routerLink]="['/zapisnici']">Zapisnici</a>
-          
+          </button>
+          <button class="button button"><a class="nav-link" [routerLink]="['/korisnici']">Korisnici</a>
+          </button>
         </li>
        </ul>
     </div>   
   </nav>
+
 </div>
 <router-outlet></router-outlet>

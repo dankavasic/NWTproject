@@ -4,41 +4,59 @@
   <h3>Zgrada {{zgrada.ime}}</h3>
 </div>
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+    crossorigin="anonymous"></script>
   <style>
   table, th, td {
     border-right: 2px solid rgb(208, 236, 197);
     border-bottom: 2px solid rgb(208, 236, 197);
   }
   </style>
+  <body style="background-color:rgb(188, 193, 194);"></body>
 </head>
 
 <div>
   <form>
+    <table class="table text-center">
+      <td>
     <div class="form-group">
       <label for="field1c" class="form-control-label">Id</label>
       <input type="text" [(ngModel)]="zgrada.id" placeholder=id 
-        class="form-control" id="field1c" name="field1">
+        class="w3-input w3-border w3-light-grey" id="field1c" name="field1">
     </div>
+    </td>
+    <td>
     <div class="form-group">
       <label for="field2c" class="form-control-label">Ime</label>
       <input type="text" [(ngModel)]="zgrada.ime" placeholder="Name" 
         class="form-control" id="field2c" name="field2">
     </div>
+    </td>
+    <td>
     <div class="form-group">
       <label for="field3c" class="form-control-label">Adresa</label>
       <input type="text" [(ngModel)]="zgrada.adresa" placeholder="Opis" 
         class="form-control" id="field3c" name="field3">
     </div>
+    </td>
+    <td>
     <div class="form-group">
       <label for="field4c" class="form-control-label">Broj stanova</label>
       <input type="text" [(ngModel)]="zgrada.brStanova" placeholder="broj stanova" 
         class="form-control" id="field4c" name="field4">
     </div>
+    </td>
+    <td>
     <div class="form-group">
       <label for="field5c" class="form-control-label">Broj naseljenih</label>
       <input type="text" [(ngModel)]="zgrada.brNaseljenih" placeholder="broj naseljenih" 
         class="form-control" id="field5c" name="field5">
     </div>
+    </td>
+    <td>
     <div class="form-group">
       <label for="field6c" class="form-control-label">Vlasnik</label>
       <input type="text" [(ngModel)]="zgrada.vlasnik.korisIme" placeholder="vlasnik" 
@@ -47,6 +65,8 @@
           <option *ngFor="let s of korisnici" [ngValue]="s.korisIme">{{s.korisIme}}</option>
         </select>
     </div>
+    </td>
+    </table>
     <!--<div class="form-group">
         <label for="vlasnik" class="form-control-label">Vlasnik</label>
         <select id="vlasnik" name="vlasnik" class="form-control" [(ngModel)]="zgrada.vlasnik.korisIme">
@@ -57,11 +77,11 @@
   <div *ngIf="zgrada.id">
     <div>
       <h3>Kvarovi</h3>
-      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKvar()">
+      <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddKvar()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
       <tr>
         <th>Id kvara</th>
         <th>Ime</th>
@@ -80,12 +100,12 @@
         <td>{{kvar.datPopravke | date: 'dd.MM.yyyy'}}</td>
         <td>{{kvar.kreator.korisIme}}</td>
         <td>
-          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditKvar(kvar)">
+          <button type="button" class="btn btn-dangerous"  aria-label="Edit" (click)="gotoEditKvar(kvar)">
             <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>  
         </td>
         <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteKvar(kvar.id)">
+          <button type="button" class="btn btn-dangerous right" aria-label="Delete" (click)="deleteKvar(kvar.id)">
             <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>
         </td>
@@ -95,11 +115,11 @@
   <div *ngIf="zgrada.id">
     <div>
       <h3>Stanovi</h3>
-      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddStan()">
+      <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddStan()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
       <tr>
         <th>Id stana</th>
         <th>Ime</th>
@@ -114,12 +134,12 @@
         <td>{{stan.brStanovnika}}</td>
         <td>{{stan.vlasnik.korisIme}}</td>
         <td>
-          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditStan(stan)">
+          <button type="button" class="btn btn-dangerous"  aria-label="Edit" (click)="gotoEditStan(stan)">
             <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>  
         </td>
         <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteStan(stan.id)">
+          <button type="button" class="btn btn-dangerous right" aria-label="Delete" (click)="deleteStan(stan.id)">
             <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>
         </td>
@@ -129,11 +149,11 @@
   <div *ngIf="zgrada.id">
     <div>
       <h3>Obavestenja</h3>
-      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddObavestenje()">
+      <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddObavestenje()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
       <tr>
         <th>Id obavestenja</th>
         <th>Ime</th>
@@ -148,12 +168,12 @@
         <td>{{obavestenje.datKreiranja | date: 'dd.MM.yyyy'}}</td>
         <td>{{obavestenje.kreator.korisIme}}</td>
         <td>
-          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditObavestenje(obavestenje)">
+          <button type="button" class="btn btn-dangerous"  aria-label="Edit" (click)="gotoEditObavestenje(obavestenje)">
             <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>  
         </td>
         <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteObavestenje(obavestenje.id)">
+          <button type="button" class="btn btn-dangerous right" aria-label="Delete" (click)="deleteObavestenje(obavestenje.id)">
             <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>
         </td>
@@ -163,11 +183,11 @@
   <div *ngIf="zgrada.id">
     <div>
       <h3>Sednice</h3>
-      <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddSednica()">
+      <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddSednica()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
       <tr>
         <th>Id sednice</th>
         <th>Aktivna</th>
@@ -182,12 +202,12 @@
         <td>{{sednica.datZakazivanja | date: 'dd.MM.yyyy'}}</td>
         <td>{{sednica.kreator.korisIme}}</td>
         <td>
-          <button type="button" class="btn btn-primary"  aria-label="Edit" (click)="gotoEditSednica(sednica)">
+          <button type="button" class="btn btn-dangerous"  aria-label="Edit" (click)="gotoEditSednica(sednica)">
             <span class="fa fa-edit" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>  
         </td>
         <td>
-          <button type="button" class="btn btn-primary right" aria-label="Delete" (click)="deleteSednica(sednica.id)">
+          <button type="button" class="btn btn-dangerous right" aria-label="Delete" (click)="deleteSednica(sednica.id)">
             <span class="fa fa-remove" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
           </button>
         </td>
@@ -197,6 +217,6 @@
 
 </div>
 <div>
-  <button class="btn btn-primary" (click)="save()" style="font-size:18px;color:darkgreen">OK</button>
-  <button class="btn btn-primary" (click)="goBack()" style="font-size:18px;color:darkgreen">Cancel</button>
+  <button class="btn btn-dangerous" (click)="save()" style="font-size:18px;color:darkgreen">OK</button>
+  <button class="btn btn-dangerous" (click)="goBack()" style="font-size:18px;color:darkgreen">Cancel</button>
 </div>

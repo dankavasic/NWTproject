@@ -2,7 +2,15 @@
 <div>
   <h3>Komentar</h3>
 </div>
-
+<head>
+  <style>
+  table, th, td {
+    border-right: 2px solid rgb(208, 236, 197);
+    border-bottom: 2px solid rgb(208, 236, 197);
+  }
+  </style>
+  <body style="background-color:rgb(188, 193, 194);"></body>
+</head>
 <div>
     <form>
       <div class="form-group">
@@ -17,8 +25,8 @@
       </div>
         <div class="form-group">
             <div class="input-group">
-                <label for="field3c" class="form-control-label">Datum kreiranja</label>
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" [(ngModel)]="ngbDatKreiranja" 
+              <label for="field3c" class="form-control-label">Datum kreiranja</label>
+               <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" [(ngModel)]="ngbDatKreiranja" 
                 ngbDatepicker #d1="ngbDatepicker">
               <button class="input-group-addon" (click)="d1.toggle()" type="button">
               <i class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"> </i> 
@@ -35,9 +43,10 @@
                   <input type="text" [(ngModel)]="komentar.kvar.id" placeholder="kvar" 
                   class="form-control" id="field5c" name="field5">
               </div>
+          </form>
  
 <div>
 
-  <button class="btn btn-primary" (click)="save()">OK</button>
-  <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+  <button class="btn btn-primary" (click)="save()" style="font-size:18px;color:darkgreen">OK</button>
+  <button class="btn btn-primary" (click)="goBack()" style="font-size:18px;color:darkgreen">Cancel</button>
 </div>
