@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-  <h3>Kvar</h3>
+  <h3 style="text-align:center;">Kvar</h3>
 </div>
 <head>
     <style>
@@ -9,13 +9,16 @@
       border-right: 2px solid rgb(208, 236, 197);
       border-bottom: 2px solid rgb(208, 236, 197);
     }
+    th,td{
+      font-weight: bold;
+    }
     </style>
-    <body style="background-color:rgb(188, 193, 194);"></body>
+    <body style="background-color:rgb(207, 134, 66);"></body>
   </head>
 <div>
   <form>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Id</label>
+      <label for="field1c" class="form-control-label">Redni broj</label>
         <input type="text" [(ngModel)]="kvar.id" placeholder=id 
         class="form-control" id="field1c" name="field1">
     </div>
@@ -74,7 +77,7 @@
 </form>
 <div *ngIf="kvar.id">
     <div>
-      <h3>Komentari</h3>
+      <h3 style="text-align:center">Komentari</h3>
       <button type="button" class="btn btn-primary" aria-label="Add" (click)="gotoAddKomentar()">
           <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>

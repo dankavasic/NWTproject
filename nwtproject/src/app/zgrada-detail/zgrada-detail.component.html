@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-  <h3>Zgrada {{zgrada.ime}}</h3>
+  <h3 style="text-align:center;">Zgrada {{zgrada.ime}}</h3>
 </div>
 <head>
     <meta charset="UTF-8">
@@ -14,8 +14,11 @@
     border-right: 2px solid rgb(208, 236, 197);
     border-bottom: 2px solid rgb(208, 236, 197);
   }
+  th, td{
+    font-weight:bold; 
+  }
   </style>
-  <body style="background-color:rgb(188, 193, 194);"></body>
+  <body style="background-color:rgb(207, 134, 66);"></body>
 </head>
 
 <div>
@@ -23,9 +26,9 @@
     <table class="table text-center">
       <td>
     <div class="form-group">
-      <label for="field1c" class="form-control-label">Id</label>
-      <input type="text" [(ngModel)]="zgrada.id" placeholder=id 
-        class="w3-input w3-border w3-light-grey" id="field1c" name="field1">
+      <label for="field1c" class="form-control-label">Redni broj</label>
+      <input type="text" [(ngModel)]="zgrada.id" placeholder="id" 
+        class="form-control" id="field1c" name="field1">
     </div>
     </td>
     <td>
@@ -76,14 +79,14 @@
   </form>
   <div *ngIf="zgrada.id">
     <div>
-      <h3>Kvarovi</h3>
+      <h3 style="text-align:center;">Kvarovi</h3>
       <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddKvar()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered text-center">
       <tr>
-        <th>Id kvara</th>
+        <th>Id</th>
         <th>Ime</th>
         <th>Opis</th>
         <th>Datum kreiranja</th>
@@ -114,14 +117,14 @@
   </div>
   <div *ngIf="zgrada.id">
     <div>
-      <h3>Stanovi</h3>
+      <h3 style="text-align:center;">Stanovi</h3>
       <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddStan()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered text-center">
       <tr>
-        <th>Id stana</th>
+        <th>Id</th>
         <th>Ime</th>
         <th>Broj stana</th>
         <th>Broj stanovnika</th>
@@ -148,14 +151,14 @@
   </div>
   <div *ngIf="zgrada.id">
     <div>
-      <h3>Obavestenja</h3>
+      <h3 style="text-align:center;">Obavestenja</h3>
       <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddObavestenje()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered text-center">
       <tr>
-        <th>Id obavestenja</th>
+        <th>Id</th>
         <th>Ime</th>
         <th>Opis</th>
         <th>Datum kreiranja</th>
@@ -182,14 +185,14 @@
   </div>
   <div *ngIf="zgrada.id">
     <div>
-      <h3>Sednice</h3>
+      <h3 style="text-align:center;">Sednice</h3>
       <button type="button" class="btn btn-dangerous" aria-label="Add" (click)="gotoAddSednica()">
         <span class="fa fa-plus" aria-hidden="true" style="font-size:18px;color:darkgreen"></span>
       </button>
     </div>
     <table class="table table-bordered text-center">
       <tr>
-        <th>Id sednice</th>
+        <th>Id</th>
         <th>Aktivna</th>
         <th>Datum kreiranja</th>
         <th>Datum zakazivanja</th>
